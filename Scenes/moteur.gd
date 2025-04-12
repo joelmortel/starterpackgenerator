@@ -60,10 +60,19 @@ var vertvert = Color8(113, 243, 65)
 var accessoire_1_index = 0
 var accessoire_2_index = 0
 
+var screensize_x = 0.0
+var screensize_y = 0.0
+var screensize = Vector2(0.0, 0.0)
+
 
 func _ready() -> void:
+	screensize_x = get_viewport().size.x
+	screensize_y = get_viewport().size.y
+	screensize = Vector2(screensize_x, screensize_y)
+	print(screensize)
 	accesoire_1.get_popup().id_pressed.connect(_on_accesoire_1_pressed)
 	accesoire_2.get_popup().id_pressed.connect(_on_accesoire_2_pressed)
+	get_window().set_min_size(screensize)
 	set_face()
 
 func _physics_process(delta: float) -> void:
