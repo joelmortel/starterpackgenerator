@@ -1,0 +1,578 @@
+[gd_scene load_steps=13 format=3 uid="uid://nmcbocrpjw0a"]
+
+[ext_resource type="SpriteFrames" uid="uid://btom6trmjdukk" path="res://Visuel/oreilles.res" id="1_8tlnm"]
+[ext_resource type="Script" path="res://Scenes/moteur.gd" id="1_lhch1"]
+[ext_resource type="SpriteFrames" uid="uid://wymmannlca2h" path="res://Visuel/corps.res" id="2_etj1i"]
+[ext_resource type="SpriteFrames" uid="uid://4bswtwch67oq" path="res://Visuel/tetes.res" id="2_fp8l7"]
+[ext_resource type="SpriteFrames" uid="uid://cv7rdhkwsa5wk" path="res://Visuel/tempo.res" id="2_kxkn3"]
+[ext_resource type="SpriteFrames" uid="uid://da67jk2exmr33" path="res://Visuel/yeux.res" id="3_bd0uu"]
+[ext_resource type="SpriteFrames" uid="uid://b6evec1t4pifj" path="res://Visuel/vetements.res" id="3_cgech"]
+[ext_resource type="SpriteFrames" uid="uid://c7b8p6011e1w6" path="res://Visuel/accessoires.res" id="3_fgm31"]
+[ext_resource type="SpriteFrames" uid="uid://o8tcy8nv6kfq" path="res://Visuel/yeux_couleurs.res" id="4_r8yo3"]
+[ext_resource type="SpriteFrames" uid="uid://kv3wtpil2f6" path="res://Visuel/nez.res" id="5_erijp"]
+[ext_resource type="SpriteFrames" uid="uid://chrdc1dwgoa2t" path="res://Visuel/bouches.res" id="6_65lk2"]
+[ext_resource type="SpriteFrames" uid="uid://coswm6ib42uhs" path="res://Visuel/cheveux.res" id="7_7grp0"]
+
+[node name="moteur" type="Node2D"]
+position = Vector2(456, 375)
+script = ExtResource("1_lhch1")
+
+[node name="template" type="Node2D" parent="."]
+position = Vector2(11, -2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="template"]
+position = Vector2(425, -61)
+scale = Vector2(0.8, 0.8)
+sprite_frames = ExtResource("2_kxkn3")
+
+[node name="sprites_accessoires" type="Node2D" parent="template"]
+
+[node name="accessoi_1" type="AnimatedSprite2D" parent="template/sprites_accessoires"]
+position = Vector2(519, -90)
+scale = Vector2(0.19, 0.19)
+sprite_frames = ExtResource("3_fgm31")
+
+[node name="accessoi_2" type="AnimatedSprite2D" parent="template/sprites_accessoires"]
+position = Vector2(522, 62)
+scale = Vector2(0.19, 0.19)
+sprite_frames = ExtResource("3_fgm31")
+
+[node name="label_nom" type="Label" parent="template"]
+offset_left = 481.0
+offset_top = 145.0
+offset_right = 572.0
+offset_bottom = 186.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 11
+text = "*****"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="bonhomme" type="Node2D" parent="."]
+position = Vector2(512, 14)
+scale = Vector2(0.53, 0.53)
+
+[node name="Corps" type="Node2D" parent="bonhomme"]
+position = Vector2(-233, 64)
+
+[node name="peau" type="AnimatedSprite2D" parent="bonhomme/Corps"]
+modulate = Color(0.368627, 0.462745, 1, 1)
+sprite_frames = ExtResource("2_etj1i")
+
+[node name="vetements" type="AnimatedSprite2D" parent="bonhomme/Corps"]
+sprite_frames = ExtResource("3_cgech")
+
+[node name="Face" type="Node2D" parent="bonhomme"]
+position = Vector2(-228, -182)
+scale = Vector2(0.615, 0.615)
+
+[node name="oreilles" type="AnimatedSprite2D" parent="bonhomme/Face"]
+sprite_frames = ExtResource("1_8tlnm")
+frame = 8
+
+[node name="tete" type="AnimatedSprite2D" parent="bonhomme/Face"]
+sprite_frames = ExtResource("2_fp8l7")
+frame = 8
+
+[node name="yeux" type="AnimatedSprite2D" parent="bonhomme/Face"]
+position = Vector2(0, -99)
+scale = Vector2(0.455, 0.455)
+sprite_frames = ExtResource("3_bd0uu")
+frame = 8
+
+[node name="yeux_couleur" type="AnimatedSprite2D" parent="bonhomme/Face"]
+modulate = Color(0.184314, 0.756863, 0.827451, 1)
+position = Vector2(0, -99)
+scale = Vector2(0.455, 0.455)
+sprite_frames = ExtResource("4_r8yo3")
+frame = 5
+
+[node name="nez" type="AnimatedSprite2D" parent="bonhomme/Face"]
+position = Vector2(0, -15)
+scale = Vector2(0.2, 0.2)
+sprite_frames = ExtResource("5_erijp")
+frame = 1
+
+[node name="bouche" type="AnimatedSprite2D" parent="bonhomme/Face"]
+position = Vector2(0, 50)
+scale = Vector2(0.305, 0.305)
+sprite_frames = ExtResource("6_65lk2")
+frame = 5
+
+[node name="cheveux" type="AnimatedSprite2D" parent="bonhomme/Face"]
+modulate = Color(1, 0.321569, 1, 1)
+position = Vector2(0, -19)
+scale = Vector2(1.29, 1.29)
+sprite_frames = ExtResource("7_7grp0")
+frame = 9
+
+[node name="Menu" type="Node2D" parent="."]
+position = Vector2(-320, -273)
+scale = Vector2(0.52, 0.52)
+
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+modulate = Color(1, 0.113725, 1, 1)
+offset_left = -189.0
+offset_top = -118.0
+offset_right = 623.0
+offset_bottom = 994.0
+
+[node name="option_0" type="Node2D" parent="Menu"]
+position = Vector2(-154, -87)
+
+[node name="tete_left" type="Button" parent="Menu/option_0"]
+offset_left = 245.0
+offset_right = 288.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "-"
+
+[node name="tete_droite" type="Button" parent="Menu/option_0"]
+offset_left = 291.0
+offset_right = 334.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "+"
+
+[node name="label" type="Label" parent="Menu/option_0"]
+offset_left = -18.0
+offset_top = -6.0
+offset_right = 100.0
+offset_bottom = 71.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 56
+text = "Tête"
+
+[node name="option_7" type="Node2D" parent="Menu"]
+position = Vector2(265, -87)
+
+[node name="clr_peau_left" type="Button" parent="Menu/option_7"]
+offset_left = 245.0
+offset_right = 288.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "-"
+
+[node name="clr_peau_droite" type="Button" parent="Menu/option_7"]
+offset_left = 291.0
+offset_right = 334.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "+"
+
+[node name="label" type="Label" parent="Menu/option_7"]
+offset_left = -18.0
+offset_top = 12.0
+offset_right = 236.0
+offset_bottom = 89.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+text = "Couleur de la peau"
+
+[node name="option_1" type="Node2D" parent="Menu"]
+position = Vector2(-154, -8)
+
+[node name="yeux_left" type="Button" parent="Menu/option_1"]
+offset_left = 245.0
+offset_right = 288.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "-"
+metadata/_edit_use_anchors_ = true
+
+[node name="yeux_droite" type="Button" parent="Menu/option_1"]
+offset_left = 291.0
+offset_right = 334.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "+"
+metadata/_edit_use_anchors_ = true
+
+[node name="label" type="Label" parent="Menu/option_1"]
+offset_left = -18.0
+offset_top = -6.0
+offset_right = 100.0
+offset_bottom = 71.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 56
+text = "Yeux"
+metadata/_edit_use_anchors_ = true
+
+[node name="option_5" type="Node2D" parent="Menu"]
+position = Vector2(265, -8)
+
+[node name="clr_yeux_left" type="Button" parent="Menu/option_5"]
+offset_left = 245.0
+offset_right = 288.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "-"
+
+[node name="clr_yeux_droite" type="Button" parent="Menu/option_5"]
+offset_left = 291.0
+offset_right = 334.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "+"
+
+[node name="label" type="Label" parent="Menu/option_5"]
+offset_left = -18.0
+offset_top = 13.0
+offset_right = 230.0
+offset_bottom = 56.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 29
+text = "Couleur des Yeux"
+autowrap_mode = 3
+
+[node name="option_8" type="Node2D" parent="Menu"]
+position = Vector2(-154, 75.7575)
+
+[node name="oreilles_left" type="Button" parent="Menu/option_8"]
+offset_left = 245.0
+offset_right = 288.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "-"
+metadata/_edit_use_anchors_ = true
+
+[node name="oreilles_droite" type="Button" parent="Menu/option_8"]
+offset_left = 291.0
+offset_right = 334.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "+"
+metadata/_edit_use_anchors_ = true
+
+[node name="label" type="Label" parent="Menu/option_8"]
+offset_left = -18.0
+offset_top = -6.0
+offset_right = 100.0
+offset_bottom = 71.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 56
+text = "Oreilles"
+metadata/_edit_use_anchors_ = true
+
+[node name="option_2" type="Node2D" parent="Menu"]
+position = Vector2(-154, 166.667)
+
+[node name="nez_left" type="Button" parent="Menu/option_2"]
+offset_left = 245.0
+offset_right = 288.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "-"
+metadata/_edit_use_anchors_ = true
+
+[node name="nez_droite" type="Button" parent="Menu/option_2"]
+offset_left = 291.0
+offset_right = 334.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "+"
+metadata/_edit_use_anchors_ = true
+
+[node name="label" type="Label" parent="Menu/option_2"]
+offset_left = -18.0
+offset_top = -6.0
+offset_right = 100.0
+offset_bottom = 71.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 56
+text = "Nez"
+metadata/_edit_use_anchors_ = true
+
+[node name="option_3" type="Node2D" parent="Menu"]
+position = Vector2(-154, 240.667)
+
+[node name="bouche_left" type="Button" parent="Menu/option_3"]
+offset_left = 245.0
+offset_right = 288.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "-"
+
+[node name="bouche_droite" type="Button" parent="Menu/option_3"]
+offset_left = 291.0
+offset_right = 334.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "+"
+
+[node name="label" type="Label" parent="Menu/option_3"]
+offset_left = -18.0
+offset_top = -6.0
+offset_right = 100.0
+offset_bottom = 71.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 56
+text = "Bouche"
+
+[node name="option_4" type="Node2D" parent="Menu"]
+position = Vector2(-154, 322.667)
+
+[node name="cheveux_left" type="Button" parent="Menu/option_4"]
+offset_left = 245.0
+offset_right = 288.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "-"
+
+[node name="cheveux_droite" type="Button" parent="Menu/option_4"]
+offset_left = 291.0
+offset_right = 334.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "+"
+
+[node name="label" type="Label" parent="Menu/option_4"]
+offset_left = -18.0
+offset_top = -6.0
+offset_right = 100.0
+offset_bottom = 71.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 56
+text = "Cheveux"
+
+[node name="option_9" type="Node2D" parent="Menu"]
+position = Vector2(-153.846, 411.538)
+
+[node name="vetements_left" type="Button" parent="Menu/option_9"]
+offset_left = 245.0
+offset_right = 288.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "-"
+
+[node name="vetements_droite" type="Button" parent="Menu/option_9"]
+offset_left = 291.0
+offset_right = 334.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "+"
+
+[node name="label" type="Label" parent="Menu/option_9"]
+offset_left = -18.0
+offset_top = -6.0
+offset_right = 100.0
+offset_bottom = 71.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 56
+text = "Linge"
+
+[node name="option_6" type="Node2D" parent="Menu"]
+position = Vector2(265, 322.667)
+
+[node name="clr_cheveux_left" type="Button" parent="Menu/option_6"]
+offset_left = 245.0
+offset_right = 288.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "-"
+
+[node name="clr_cheveux_droite" type="Button" parent="Menu/option_6"]
+offset_left = 291.0
+offset_right = 334.0
+offset_bottom = 63.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "+"
+
+[node name="label" type="Label" parent="Menu/option_6"]
+offset_left = -18.0
+offset_top = 13.0
+offset_right = 232.0
+offset_bottom = 90.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Couleur des cheveux"
+
+[node name="Accesoire1" type="MenuButton" parent="Menu"]
+offset_left = -175.758
+offset_top = 580.303
+offset_right = 164.242
+offset_bottom = 710.303
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 56
+text = "Accessoire 1"
+flat = false
+item_count = 17
+popup/item_0/text = "Micro"
+popup/item_0/id = 1
+popup/item_1/text = "Clope"
+popup/item_1/id = 2
+popup/item_2/text = "Bière"
+popup/item_2/id = 3
+popup/item_3/text = "Téléphone"
+popup/item_3/id = 4
+popup/item_4/text = "Guitare"
+popup/item_4/id = 5
+popup/item_5/text = "Hockey"
+popup/item_5/id = 6
+popup/item_6/text = "Voiture"
+popup/item_6/id = 7
+popup/item_7/text = "Netflix"
+popup/item_7/id = 8
+popup/item_8/text = "Pot"
+popup/item_8/id = 9
+popup/item_9/text = "Fusil"
+popup/item_9/id = 10
+popup/item_10/text = "Romantique"
+popup/item_10/id = 11
+popup/item_11/text = "Beigne"
+popup/item_11/id = 12
+popup/item_12/text = "Gamer"
+popup/item_12/id = 13
+popup/item_13/text = "Pomme"
+popup/item_13/id = 14
+popup/item_14/text = "Café"
+popup/item_14/id = 15
+popup/item_15/text = "Vin"
+popup/item_15/id = 16
+popup/item_16/text = "*********"
+popup/item_16/id = 16
+
+[node name="Label_Acc_1" type="Label" parent="Menu/Accesoire1"]
+layout_mode = 0
+offset_top = 124.242
+offset_right = 307.0
+offset_bottom = 201.242
+theme_override_colors/font_color = Color(0.933333, 0.94902, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 56
+text = "**********"
+
+[node name="Accesoire2" type="MenuButton" parent="Menu"]
+offset_left = 239.394
+offset_top = 580.303
+offset_right = 579.394
+offset_bottom = 710.303
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 56
+text = "Accessoire 2"
+flat = false
+item_count = 17
+popup/item_0/text = "Micro"
+popup/item_0/id = 1
+popup/item_1/text = "Clope"
+popup/item_1/id = 2
+popup/item_2/text = "Bière"
+popup/item_2/id = 3
+popup/item_3/text = "Téléphone"
+popup/item_3/id = 4
+popup/item_4/text = "Guitare"
+popup/item_4/id = 5
+popup/item_5/text = "Hockey"
+popup/item_5/id = 6
+popup/item_6/text = "Voiture"
+popup/item_6/id = 7
+popup/item_7/text = "Netflix"
+popup/item_7/id = 8
+popup/item_8/text = "Pot"
+popup/item_8/id = 9
+popup/item_9/text = "Fusil"
+popup/item_9/id = 10
+popup/item_10/text = "Romantique"
+popup/item_10/id = 11
+popup/item_11/text = "Beigne"
+popup/item_11/id = 12
+popup/item_12/text = "Gamer"
+popup/item_12/id = 13
+popup/item_13/text = "Pomme"
+popup/item_13/id = 14
+popup/item_14/text = "Café"
+popup/item_14/id = 15
+popup/item_15/text = "Vin"
+popup/item_15/id = 16
+popup/item_16/text = "*********"
+popup/item_16/id = 16
+
+[node name="Label_Acc_2" type="Label" parent="Menu/Accesoire2"]
+layout_mode = 0
+offset_top = 124.242
+offset_right = 307.0
+offset_bottom = 201.242
+theme_override_colors/font_color = Color(0.933333, 0.94902, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 56
+text = "**********"
+
+[node name="LineEdit" type="LineEdit" parent="Menu"]
+offset_left = -15.0
+offset_top = 848.0
+offset_right = 607.0
+offset_bottom = 933.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 56
+max_length = 30
+
+[node name="Label" type="Label" parent="Menu/LineEdit"]
+layout_mode = 0
+offset_left = -169.615
+offset_right = -7.61539
+offset_bottom = 77.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 56
+text = "Nom :"
+
+[node name="Label" type="Label" parent="Menu"]
+offset_left = -157.692
+offset_top = 509.615
+offset_right = 590.308
+offset_bottom = 586.615
+theme_override_colors/font_color = Color(1, 0.913725, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 56
+text = "Choisissez deux accessoires"
+
+[node name="aleatoire" type="Button" parent="."]
+offset_left = 48.0
+offset_top = -74.0
+offset_right = 190.0
+offset_bottom = -13.0
+text = "ALÉATOIRE"
+
+[connection signal="pressed" from="Menu/option_0/tete_left" to="." method="_on_tete_left_pressed"]
+[connection signal="pressed" from="Menu/option_0/tete_droite" to="." method="_on_tete_droite_pressed"]
+[connection signal="pressed" from="Menu/option_7/clr_peau_left" to="." method="_on_clr_peau_left_pressed"]
+[connection signal="pressed" from="Menu/option_7/clr_peau_droite" to="." method="_on_clr_peau_droite_pressed"]
+[connection signal="pressed" from="Menu/option_1/yeux_left" to="." method="_on_yeux_left_pressed"]
+[connection signal="pressed" from="Menu/option_1/yeux_droite" to="." method="_on_yeux_droite_pressed"]
+[connection signal="pressed" from="Menu/option_5/clr_yeux_left" to="." method="_on_clr_yeux_left_pressed"]
+[connection signal="pressed" from="Menu/option_5/clr_yeux_droite" to="." method="_on_clr_yeux_droite_pressed"]
+[connection signal="pressed" from="Menu/option_8/oreilles_left" to="." method="_on_oreilles_left_pressed"]
+[connection signal="pressed" from="Menu/option_8/oreilles_droite" to="." method="_on_oreilles_droite_pressed"]
+[connection signal="pressed" from="Menu/option_2/nez_left" to="." method="_on_nez_left_pressed"]
+[connection signal="pressed" from="Menu/option_2/nez_droite" to="." method="_on_nez_droite_pressed"]
+[connection signal="pressed" from="Menu/option_3/bouche_left" to="." method="_on_bouche_left_pressed"]
+[connection signal="pressed" from="Menu/option_3/bouche_droite" to="." method="_on_bouche_droite_pressed"]
+[connection signal="pressed" from="Menu/option_4/cheveux_left" to="." method="_on_cheveux_left_pressed"]
+[connection signal="pressed" from="Menu/option_4/cheveux_droite" to="." method="_on_cheveux_droite_pressed"]
+[connection signal="pressed" from="Menu/option_9/vetements_left" to="." method="_on_vetements_left_pressed"]
+[connection signal="pressed" from="Menu/option_9/vetements_droite" to="." method="_on_vetements_droite_pressed"]
+[connection signal="pressed" from="Menu/option_6/clr_cheveux_left" to="." method="_on_clr_cheveux_left_pressed"]
+[connection signal="pressed" from="Menu/option_6/clr_cheveux_droite" to="." method="_on_clr_cheveux_droite_pressed"]
+[connection signal="text_changed" from="Menu/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="aleatoire" to="." method="_on_aleatoire_pressed"]
