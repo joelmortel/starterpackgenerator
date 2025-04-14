@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://2mv4y17rnlb4"]
+
+[ext_resource type="Script" path="res://bonhomme_basic.gd" id="1_onbfc"]
+[ext_resource type="SpriteFrames" uid="uid://wymmannlca2h" path="res://Visuel/corps.res" id="1_uiyyj"]
+[ext_resource type="SpriteFrames" uid="uid://b6evec1t4pifj" path="res://Visuel/vetements.res" id="2_dtb4h"]
+[ext_resource type="SpriteFrames" uid="uid://btom6trmjdukk" path="res://Visuel/oreilles.res" id="3_wwy87"]
+[ext_resource type="SpriteFrames" uid="uid://4bswtwch67oq" path="res://Visuel/tetes.res" id="4_7wsh6"]
+[ext_resource type="SpriteFrames" uid="uid://da67jk2exmr33" path="res://Visuel/yeux.res" id="5_a8u4t"]
+[ext_resource type="SpriteFrames" uid="uid://o8tcy8nv6kfq" path="res://Visuel/yeux_couleurs.res" id="6_h54vj"]
+[ext_resource type="SpriteFrames" uid="uid://kv3wtpil2f6" path="res://Visuel/nez.res" id="7_85e27"]
+[ext_resource type="SpriteFrames" uid="uid://chrdc1dwgoa2t" path="res://Visuel/bouches.res" id="8_4xfpq"]
+[ext_resource type="SpriteFrames" uid="uid://coswm6ib42uhs" path="res://Visuel/cheveux.res" id="9_g4sw4"]
+[ext_resource type="SpriteFrames" uid="uid://c7b8p6011e1w6" path="res://Visuel/accessoires.res" id="10_oy356"]
+
+[node name="bonhomme_basic" type="Node2D"]
+script = ExtResource("1_onbfc")
+
+[node name="bonhomme" type="Node2D" parent="."]
+position = Vector2(126, -31)
+scale = Vector2(0.53, 0.53)
+
+[node name="Corps" type="Node2D" parent="bonhomme"]
+position = Vector2(-233, 64)
+
+[node name="peau" type="AnimatedSprite2D" parent="bonhomme/Corps"]
+modulate = Color(0.368627, 0.462745, 1, 1)
+sprite_frames = ExtResource("1_uiyyj")
+
+[node name="vetements" type="AnimatedSprite2D" parent="bonhomme/Corps"]
+sprite_frames = ExtResource("2_dtb4h")
+frame = 2
+
+[node name="Face" type="Node2D" parent="bonhomme"]
+position = Vector2(-228, -182)
+scale = Vector2(0.615, 0.615)
+
+[node name="oreilles" type="AnimatedSprite2D" parent="bonhomme/Face"]
+sprite_frames = ExtResource("3_wwy87")
+frame = 8
+
+[node name="tete" type="AnimatedSprite2D" parent="bonhomme/Face"]
+sprite_frames = ExtResource("4_7wsh6")
+frame = 8
+
+[node name="yeux" type="AnimatedSprite2D" parent="bonhomme/Face"]
+position = Vector2(0, -99)
+scale = Vector2(0.455, 0.455)
+sprite_frames = ExtResource("5_a8u4t")
+frame = 8
+
+[node name="yeux_couleur" type="AnimatedSprite2D" parent="bonhomme/Face"]
+modulate = Color(0.184314, 0.756863, 0.827451, 1)
+position = Vector2(0, -99)
+scale = Vector2(0.455, 0.455)
+sprite_frames = ExtResource("6_h54vj")
+frame = 5
+
+[node name="nez" type="AnimatedSprite2D" parent="bonhomme/Face"]
+position = Vector2(0, -15)
+scale = Vector2(0.2, 0.2)
+sprite_frames = ExtResource("7_85e27")
+frame = 1
+
+[node name="bouche" type="AnimatedSprite2D" parent="bonhomme/Face"]
+position = Vector2(0, 50)
+scale = Vector2(0.305, 0.305)
+sprite_frames = ExtResource("8_4xfpq")
+frame = 5
+
+[node name="cheveux" type="AnimatedSprite2D" parent="bonhomme/Face"]
+modulate = Color(1, 0.321569, 1, 1)
+position = Vector2(0, -19)
+scale = Vector2(1.29, 1.29)
+sprite_frames = ExtResource("9_g4sw4")
+frame = 9
+
+[node name="Accessoires" type="Node2D" parent="bonhomme"]
+
+[node name="accessoires1" type="AnimatedSprite2D" parent="bonhomme/Accessoires"]
+position = Vector2(-379.245, 118.868)
+scale = Vector2(0.31, 0.31)
+sprite_frames = ExtResource("10_oy356")
+frame = 16
+
+[node name="accessoires2" type="AnimatedSprite2D" parent="bonhomme/Accessoires"]
+position = Vector2(-116.981, 118.868)
+scale = Vector2(0.31, 0.31)
+sprite_frames = ExtResource("10_oy356")
+frame = 16

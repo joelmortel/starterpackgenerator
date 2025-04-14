@@ -1,0 +1,328 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo7hg4bprd4bg"]
+
+[ext_resource type="PackedScene" uid="uid://2mv4y17rnlb4" path="res://bonhomme_basic.tscn" id="1_d8fo4"]
+
+[node name="plateau" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 1.0
+offset_right = 1153.0
+offset_bottom = 651.0
+
+[node name="banane" type="Node2D" parent="."]
+position = Vector2(-171, -6)
+
+[node name="banane_00" type="Marker2D" parent="banane"]
+position = Vector2(371, 109)
+
+[node name="bonhomme_basic" parent="banane/banane_00" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_01" type="Marker2D" parent="banane"]
+position = Vector2(320, 148)
+
+[node name="bonhomme_basic" parent="banane/banane_01" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_02" type="Marker2D" parent="banane"]
+position = Vector2(278, 221)
+
+[node name="bonhomme_basic" parent="banane/banane_02" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_03" type="Marker2D" parent="banane"]
+position = Vector2(244, 300)
+
+[node name="bonhomme_basic" parent="banane/banane_03" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_04" type="Marker2D" parent="banane"]
+position = Vector2(245, 403)
+
+[node name="bonhomme_basic" parent="banane/banane_04" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_05" type="Marker2D" parent="banane"]
+position = Vector2(272, 503)
+
+[node name="bonhomme_basic" parent="banane/banane_05" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_06" type="Marker2D" parent="banane"]
+position = Vector2(317, 588)
+
+[node name="bonhomme_basic" parent="banane/banane_06" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_07" type="Marker2D" parent="banane"]
+position = Vector2(390, 586)
+
+[node name="bonhomme_basic" parent="banane/banane_07" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_08" type="Marker2D" parent="banane"]
+position = Vector2(336, 489)
+
+[node name="bonhomme_basic" parent="banane/banane_08" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_09" type="Marker2D" parent="banane"]
+position = Vector2(303, 377)
+
+[node name="bonhomme_basic" parent="banane/banane_09" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_10" type="Marker2D" parent="banane"]
+position = Vector2(325, 271)
+
+[node name="bonhomme_basic" parent="banane/banane_10" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_11" type="Marker2D" parent="banane"]
+position = Vector2(380, 209)
+
+[node name="bonhomme_basic" parent="banane/banane_11" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_12" type="Marker2D" parent="banane"]
+position = Vector2(435, 92)
+
+[node name="bonhomme_basic" parent="banane/banane_12" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_13" type="Marker2D" parent="banane"]
+position = Vector2(496, 82)
+
+[node name="bonhomme_basic" parent="banane/banane_13" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_14" type="Marker2D" parent="banane"]
+position = Vector2(552, 83)
+
+[node name="bonhomme_basic" parent="banane/banane_14" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_15" type="Marker2D" parent="banane"]
+position = Vector2(429, 192)
+
+[node name="bonhomme_basic" parent="banane/banane_15" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_16" type="Marker2D" parent="banane"]
+position = Vector2(372, 313)
+
+[node name="bonhomme_basic" parent="banane/banane_16" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_17" type="Marker2D" parent="banane"]
+position = Vector2(372, 412)
+
+[node name="bonhomme_basic" parent="banane/banane_17" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_18" type="Marker2D" parent="banane"]
+position = Vector2(407, 490)
+
+[node name="bonhomme_basic" parent="banane/banane_18" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_19" type="Marker2D" parent="banane"]
+position = Vector2(440, 610)
+
+[node name="bonhomme_basic" parent="banane/banane_19" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_20" type="Marker2D" parent="banane"]
+position = Vector2(499, 609)
+
+[node name="bonhomme_basic" parent="banane/banane_20" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_21" type="Marker2D" parent="banane"]
+position = Vector2(558, 605)
+
+[node name="bonhomme_basic" parent="banane/banane_21" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_22" type="Marker2D" parent="banane"]
+position = Vector2(615, 81)
+
+[node name="bonhomme_basic" parent="banane/banane_22" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_23" type="Marker2D" parent="banane"]
+position = Vector2(456, 508)
+
+[node name="bonhomme_basic" parent="banane/banane_23" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_24" type="Marker2D" parent="banane"]
+position = Vector2(618, 604)
+
+[node name="bonhomme_basic" parent="banane/banane_24" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="banane_25" type="Marker2D" parent="banane"]
+position = Vector2(669, 85)
+
+[node name="bonhomme_basic" parent="banane/banane_25" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange" type="Node2D" parent="."]
+position = Vector2(392, 243)
+
+[node name="orange_00" type="Marker2D" parent="orange"]
+position = Vector2(567, 164)
+
+[node name="bonhomme_basic" parent="orange/orange_00" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_01" type="Marker2D" parent="orange"]
+position = Vector2(619, 130)
+
+[node name="bonhomme_basic" parent="orange/orange_01" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_02" type="Marker2D" parent="orange"]
+position = Vector2(571, 59)
+
+[node name="bonhomme_basic" parent="orange/orange_02" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_03" type="Marker2D" parent="orange"]
+position = Vector2(517, 99)
+
+[node name="bonhomme_basic" parent="orange/orange_03" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_04" type="Marker2D" parent="orange"]
+position = Vector2(512, 207)
+
+[node name="bonhomme_basic" parent="orange/orange_04" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_05" type="Marker2D" parent="orange"]
+position = Vector2(569, 267)
+
+[node name="bonhomme_basic" parent="orange/orange_05" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_06" type="Marker2D" parent="orange"]
+position = Vector2(624, 233)
+
+[node name="bonhomme_basic" parent="orange/orange_06" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_07" type="Marker2D" parent="orange"]
+position = Vector2(679, 170)
+
+[node name="bonhomme_basic" parent="orange/orange_07" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_08" type="Marker2D" parent="orange"]
+position = Vector2(675, 59)
+
+[node name="bonhomme_basic" parent="orange/orange_08" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_09" type="Marker2D" parent="orange"]
+position = Vector2(626, 24)
+
+[node name="bonhomme_basic" parent="orange/orange_09" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_10" type="Marker2D" parent="orange"]
+position = Vector2(520, -9)
+
+[node name="bonhomme_basic" parent="orange/orange_10" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_11" type="Marker2D" parent="orange"]
+position = Vector2(473, 26)
+
+[node name="bonhomme_basic" parent="orange/orange_11" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_12" type="Marker2D" parent="orange"]
+position = Vector2(464, 120)
+
+[node name="bonhomme_basic" parent="orange/orange_12" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_13" type="Marker2D" parent="orange"]
+position = Vector2(460, 218)
+
+[node name="bonhomme_basic" parent="orange/orange_13" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_14" type="Marker2D" parent="orange"]
+position = Vector2(505, 302)
+
+[node name="bonhomme_basic" parent="orange/orange_14" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_15" type="Marker2D" parent="orange"]
+position = Vector2(455, 316)
+
+[node name="bonhomme_basic" parent="orange/orange_15" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_16" type="Marker2D" parent="orange"]
+position = Vector2(406, 273)
+
+[node name="bonhomme_basic" parent="orange/orange_16" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_17" type="Marker2D" parent="orange"]
+position = Vector2(349, 252)
+
+[node name="bonhomme_basic" parent="orange/orange_17" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_18" type="Marker2D" parent="orange"]
+position = Vector2(407, 160)
+
+[node name="bonhomme_basic" parent="orange/orange_18" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_19" type="Marker2D" parent="orange"]
+position = Vector2(348, 137)
+
+[node name="bonhomme_basic" parent="orange/orange_19" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_20" type="Marker2D" parent="orange"]
+position = Vector2(408, 55)
+
+[node name="bonhomme_basic" parent="orange/orange_20" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_21" type="Marker2D" parent="orange"]
+position = Vector2(347, 30)
+
+[node name="bonhomme_basic" parent="orange/orange_21" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_22" type="Marker2D" parent="orange"]
+position = Vector2(406, -49)
+
+[node name="bonhomme_basic" parent="orange/orange_22" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_23" type="Marker2D" parent="orange"]
+position = Vector2(468, -79)
+
+[node name="bonhomme_basic" parent="orange/orange_23" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_24" type="Marker2D" parent="orange"]
+position = Vector2(574, -53)
+
+[node name="bonhomme_basic" parent="orange/orange_24" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)
+
+[node name="orange_25" type="Marker2D" parent="orange"]
+position = Vector2(295, 135)
+
+[node name="bonhomme_basic" parent="orange/orange_25" instance=ExtResource("1_d8fo4")]
+scale = Vector2(0.25, 0.25)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cdmghfmx74sd3"]
+[gd_scene load_steps=21 format=3 uid="uid://cdmghfmx74sd3"]
 
 [ext_resource type="Script" path="res://jeu.gd" id="1_sp1r3"]
 [ext_resource type="SpriteFrames" uid="uid://wymmannlca2h" path="res://Visuel/corps.res" id="2_8ij2y"]
@@ -12,10 +12,14 @@
 [ext_resource type="SpriteFrames" uid="uid://coswm6ib42uhs" path="res://Visuel/cheveux.res" id="10_j86qu"]
 [ext_resource type="SpriteFrames" uid="uid://c7b8p6011e1w6" path="res://Visuel/accessoires.res" id="11_twxa0"]
 [ext_resource type="AudioStream" uid="uid://bp7c2v5mguosl" path="res://audio/oksound.wav" id="12_2d2df"]
+[ext_resource type="AudioStream" uid="uid://bdiri8oph6e55" path="res://audio/oksound2.wav" id="13_613sa"]
 [ext_resource type="AudioStream" uid="uid://bavpnif7yegqs" path="res://audio/zap.wav" id="13_h18yl"]
 [ext_resource type="AudioStream" uid="uid://wtfv32b4m8by" path="res://audio/fail.wav" id="13_s5uoj"]
+[ext_resource type="AudioStream" uid="uid://cm4iehsv1kj1f" path="res://audio/oksound3.wav" id="14_sjjwl"]
 [ext_resource type="AudioStream" uid="uid://bog0hyu3cd6bo" path="res://audio/zap2.wav" id="15_nylsa"]
 [ext_resource type="AudioStream" uid="uid://cifpqckuq717q" path="res://audio/zap3.wav" id="16_qlemp"]
+[ext_resource type="AudioStream" uid="uid://dbrf54gr4tq4h" path="res://audio/full.wav" id="19_pr61v"]
+[ext_resource type="AudioStream" uid="uid://b5j4y7xvheluf" path="res://audio/casting_theme.wav" id="20_cwtt4"]
 
 [node name="jeu" type="Node2D"]
 script = ExtResource("1_sp1r3")
@@ -192,6 +196,12 @@ vertical_alignment = 1
 [node name="audio_ok" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("12_2d2df")
 
+[node name="audio_ok2" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("13_613sa")
+
+[node name="audio_ok3" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("14_sjjwl")
+
 [node name="audio_fail" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("13_s5uoj")
 
@@ -203,6 +213,13 @@ stream = ExtResource("15_nylsa")
 
 [node name="audio_zap3" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("16_qlemp")
+
+[node name="audio_full" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("19_pr61v")
+
+[node name="audio_musique" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("20_cwtt4")
+autoplay = true
 
 [connection signal="timeout" from="Timer_game" to="." method="_on_timer_game_timeout"]
 [connection signal="pressed" from="UICHEAP/ColorRect/bouton_jaune" to="." method="_on_bouton_jaune_pressed"]
