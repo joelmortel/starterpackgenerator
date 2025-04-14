@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdmghfmx74sd3"]
+[gd_scene load_steps=17 format=3 uid="uid://cdmghfmx74sd3"]
 
 [ext_resource type="Script" path="res://jeu.gd" id="1_sp1r3"]
 [ext_resource type="SpriteFrames" uid="uid://wymmannlca2h" path="res://Visuel/corps.res" id="2_8ij2y"]
@@ -11,6 +11,11 @@
 [ext_resource type="SpriteFrames" uid="uid://chrdc1dwgoa2t" path="res://Visuel/bouches.res" id="9_s0sae"]
 [ext_resource type="SpriteFrames" uid="uid://coswm6ib42uhs" path="res://Visuel/cheveux.res" id="10_j86qu"]
 [ext_resource type="SpriteFrames" uid="uid://c7b8p6011e1w6" path="res://Visuel/accessoires.res" id="11_twxa0"]
+[ext_resource type="AudioStream" uid="uid://bp7c2v5mguosl" path="res://audio/oksound.wav" id="12_2d2df"]
+[ext_resource type="AudioStream" uid="uid://bavpnif7yegqs" path="res://audio/zap.wav" id="13_h18yl"]
+[ext_resource type="AudioStream" uid="uid://wtfv32b4m8by" path="res://audio/fail.wav" id="13_s5uoj"]
+[ext_resource type="AudioStream" uid="uid://bog0hyu3cd6bo" path="res://audio/zap2.wav" id="15_nylsa"]
+[ext_resource type="AudioStream" uid="uid://cifpqckuq717q" path="res://audio/zap3.wav" id="16_qlemp"]
 
 [node name="jeu" type="Node2D"]
 script = ExtResource("1_sp1r3")
@@ -169,6 +174,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="label_vies" type="Label" parent="UICHEAP/ColorRect"]
+layout_mode = 0
 offset_left = 26.0
 offset_top = 235.0
 offset_right = 382.0
@@ -180,6 +186,23 @@ theme_override_font_sizes/font_size = 31
 text = "VIES VIES VIES VIES VIES "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="audio_ok" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("12_2d2df")
+
+[node name="audio_fail" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("13_s5uoj")
+
+[node name="audio_zap" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("13_h18yl")
+
+[node name="audio_zap2" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("15_nylsa")
+
+[node name="audio_zap3" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("16_qlemp")
 
 [connection signal="timeout" from="Timer_game" to="." method="_on_timer_game_timeout"]
 [connection signal="pressed" from="UICHEAP/ColorRect/bouton_jaune" to="." method="_on_bouton_jaune_pressed"]

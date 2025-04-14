@@ -29,6 +29,14 @@ extends Node2D
 @onready var time_label: Label = $UICHEAP/ColorRect/time_label
 
 
+## audio
+@onready var audio_ok: AudioStreamPlayer = $Audio/audio_ok
+@onready var audio_fail: AudioStreamPlayer = $Audio/audio_fail
+@onready var audio_zap: AudioStreamPlayer = $Audio/audio_zap
+@onready var audio_zap_2: AudioStreamPlayer = $Audio/audio_zap2
+@onready var audio_zap_3: AudioStreamPlayer = $Audio/audio_zap3
+
+
 
 
 var tete_index = 0
@@ -285,6 +293,7 @@ func verifier_bonhomme(reponse_joueur):
 			if npc_jaunes > 25 :
 				print("QUOTA DÉPASSÉ : - 1 vie")
 				vies_joueur -= 1
+				audio_fail.play()
 				if vies_joueur < 1:
 					game_over = true
 			if npc_jaunes == 25:
@@ -293,11 +302,15 @@ func verifier_bonhomme(reponse_joueur):
 				if repertoire_acces_interdit.has(accessoire_1_index) or repertoire_acces_interdit.has(accessoire_2_index):
 					print("accessoire interdit")
 					vies_joueur -= 1
+					audio_fail.play()
 					if vies_joueur < 1:
 						game_over = true
+				else:
+					audio_ok.play()
 		else:
 			print("MAUVAISE FILE : - 1 vie")
 			vies_joueur -= 1
+			audio_fail.play()
 			if vies_joueur < 1:
 				game_over = true
 	if reponse_joueur == "orange":
@@ -306,6 +319,7 @@ func verifier_bonhomme(reponse_joueur):
 			if npc_orange > 25 :
 				print("QUOTA DÉPASSÉ : - 1 vie")
 				vies_joueur -= 1
+				audio_fail.play()
 				if vies_joueur < 1:
 					game_over = true
 			if npc_orange == 25:
@@ -314,11 +328,15 @@ func verifier_bonhomme(reponse_joueur):
 				if repertoire_acces_interdit.has(accessoire_1_index) or repertoire_acces_interdit.has(accessoire_2_index):
 					print("accessoire interdit")
 					vies_joueur -= 1
+					audio_fail.play()
 					if vies_joueur < 1:
 						game_over = true
+				else:
+					audio_ok.play()
 		else:
 			print("MAUVAISE FILE : - 1 vie")
 			vies_joueur -= 1
+			audio_fail.play()
 			if vies_joueur < 0:
 				game_over = true
 		
@@ -328,6 +346,9 @@ func verifier_bonhomme(reponse_joueur):
 	
 	if reponse_joueur == "rejet":
 		print("personnage rejeté")
+		var zap_array = [audio_zap, audio_zap_2, audio_zap_3]
+		var zap_choisi = zap_array.pick_random()
+		zap_choisi.play()
 	bonhomme.hide()
 	if game_over == false:
 		bonhomme_random()
