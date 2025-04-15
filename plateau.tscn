@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo7hg4bprd4bg"]
+[gd_scene load_steps=3 format=3 uid="uid://bo7hg4bprd4bg"]
 
 [ext_resource type="PackedScene" uid="uid://2mv4y17rnlb4" path="res://bonhomme_basic.tscn" id="1_d8fo4"]
+[ext_resource type="Script" path="res://plateau.gd" id="1_ye7f7"]
 
 [node name="plateau" type="Node2D"]
+script = ExtResource("1_ye7f7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 1.0

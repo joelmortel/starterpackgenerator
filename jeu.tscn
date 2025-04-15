@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cdmghfmx74sd3"]
+[gd_scene load_steps=22 format=3 uid="uid://cdmghfmx74sd3"]
 
 [ext_resource type="Script" path="res://jeu.gd" id="1_sp1r3"]
 [ext_resource type="SpriteFrames" uid="uid://wymmannlca2h" path="res://Visuel/corps.res" id="2_8ij2y"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://cifpqckuq717q" path="res://audio/zap3.wav" id="16_qlemp"]
 [ext_resource type="AudioStream" uid="uid://dbrf54gr4tq4h" path="res://audio/full.wav" id="19_pr61v"]
 [ext_resource type="AudioStream" uid="uid://b5j4y7xvheluf" path="res://audio/casting_theme.wav" id="20_cwtt4"]
+[ext_resource type="PackedScene" uid="uid://bo7hg4bprd4bg" path="res://plateau.tscn" id="21_fxvn6"]
 
 [node name="jeu" type="Node2D"]
 script = ExtResource("1_sp1r3")
@@ -220,6 +221,10 @@ stream = ExtResource("19_pr61v")
 [node name="audio_musique" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("20_cwtt4")
 autoplay = true
+
+[node name="plateau" parent="." instance=ExtResource("21_fxvn6")]
+position = Vector2(835, 473)
+scale = Vector2(0.245, 0.245)
 
 [connection signal="timeout" from="Timer_game" to="." method="_on_timer_game_timeout"]
 [connection signal="pressed" from="UICHEAP/ColorRect/bouton_jaune" to="." method="_on_bouton_jaune_pressed"]

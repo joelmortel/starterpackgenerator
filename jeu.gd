@@ -39,6 +39,7 @@ extends Node2D
 @onready var audio_ok_3: AudioStreamPlayer = $Audio/audio_ok3
 @onready var audio_full: AudioStreamPlayer = $Audio/audio_full
 
+@onready var plateau: Node2D = $plateau
 
 
 
@@ -313,6 +314,7 @@ func verifier_bonhomme(reponse_joueur):
 					var win_sound_array = [audio_ok, audio_ok_2, audio_ok_3]
 					var win_sound_choisi = win_sound_array.pick_random()
 					win_sound_choisi.play()
+					copy_bonhomme("jaune")
 		else:
 			print("MAUVAISE FILE : - 1 vie")
 			vies_joueur -= 1
@@ -342,6 +344,7 @@ func verifier_bonhomme(reponse_joueur):
 					var win_sound_array = [audio_ok, audio_ok_2, audio_ok_3]
 					var win_sound_choisi = win_sound_array.pick_random()
 					win_sound_choisi.play()
+					copy_bonhomme("orange")
 		else:
 			print("MAUVAISE FILE : - 1 vie")
 			vies_joueur -= 1
@@ -385,3 +388,22 @@ func _on_bouton_orange_pressed() -> void:
 
 func _on_bouton_rejet_pressed() -> void:
 	verifier_bonhomme("rejet")
+	
+	
+	
+func copy_bonhomme(couleur: String):
+	var fiche_bonhomme = []
+	fiche_bonhomme.append(peau.modulate)
+	fiche_bonhomme.append(vetements.frame)
+	fiche_bonhomme.append(oreilles.frame)
+	fiche_bonhomme.append(tete.frame)
+	fiche_bonhomme.append(yeux.frame)
+	fiche_bonhomme.append(yeux_couleur.modulate)
+	fiche_bonhomme.append(nez.frame)
+	fiche_bonhomme.append(bouche.frame)
+	fiche_bonhomme.append(cheveux.frame)
+	fiche_bonhomme.append(accessoires_1.frame)
+	fiche_bonhomme.append(accessoires_2.frame)
+	fiche_bonhomme.append(cheveux.modulate)
+	var section_couleur = couleur
+	plateau.placer_bonhomme(section_couleur, fiche_bonhomme)
