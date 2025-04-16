@@ -41,7 +41,14 @@ extends Node2D
 
 @onready var plateau: Node2D = $plateau
 
+@onready var spawn_node: Node2D = $spawn_node
 
+@onready var spawn_timer: Timer = $spawn_timer
+
+@onready var croco_panel: Node2D = $UICHEAP/croco_panel
+
+
+var bonhomme_basic = preload("res://bonhomme_arrive.tscn")
 
 var tete_index = 0
 var yeux_index = 0
@@ -85,6 +92,8 @@ var accessoire_2_index = 0
 
 var vies_joueur = 3
 
+var NPC_needed = 15
+
 var game_time = 120
 var temps_restant = 0
 
@@ -94,6 +103,8 @@ var npc_jaunes = 0
 var npc_orange = 0
 
 var game_over = false
+
+var waiting_bonhomme = false
 
 
 var repertoire_accessoires = [1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -110,6 +121,8 @@ func _ready() -> void:
 	update_the_ui()
 		
 func _physics_process(delta: float) -> void:
+	if waiting_bonhomme == true:
+		return
 	if Input.is_action_just_pressed("ui_left"):
 		print("jaune")
 		verifier_bonhomme("jaune")
@@ -123,11 +136,11 @@ func _physics_process(delta: float) -> void:
 
 func update_the_ui():
 	label_vies.text = "Points de vie : " + str(vies_joueur)
-	jaune_label.text = str(npc_jaunes) + " sur 25"
-	orange_label.text = str(npc_orange) + " sur 25"
-	if npc_jaunes >= 25:
+	jaune_label.text = str(npc_jaunes) + " sur " + str(NPC_needed)
+	orange_label.text = str(npc_orange) + " sur " + str(NPC_needed)
+	if npc_jaunes >= NPC_needed:
 		jaune_label.text = "COMPLET"
-	if npc_orange >= 25:
+	if npc_orange >= NPC_needed:
 		orange_label.text = "COMPLET"
 		
 	var minute_label = floor(game_time/60)
@@ -245,13 +258,20 @@ func set_face():
 ## régler accessoires
 	accessoires_1.frame = accessoire_1_index
 	accessoires_2.frame = accessoire_2_index
-		
+	
+	var NPC = bonhomme_basic.instantiate()
+	spawn_node.add_child(NPC)
+	NPC.global_position = Vector2(-150, 300)
+	var fiche = infos_bonhomme()
+	NPC.remake_bonhomme(fiche)
+	
 		
 			
-	bonhomme.show()
+	#bonhomme.show()
 			
 			
 func bonhomme_random() -> void:
+	bonhomme.position = Vector2(-125, 350)
 	tete_index = randi_range(0,8)
 	yeux_index = randi_range(0,8)
 	nez_index = randi_range(0,8)
@@ -294,48 +314,64 @@ func verifier_bonhomme(reponse_joueur):
 	if reponse_joueur == "jaune":
 		if vetements_index == 2 or vetements_index == 6 or vetements_index == 7:
 			npc_jaunes += 1
-			if npc_jaunes > 25 :
+			if npc_jaunes > NPC_needed :
+				var replique = "Cette section est déjà complétée idiot!"
+				croco_panel.croco_parle(replique, "bad")
 				print("QUOTA DÉPASSÉ : - 1 vie")
 				vies_joueur -= 1
 				audio_fail.play()
 				if vies_joueur < 1:
 					game_over = true
-			if npc_jaunes == 25:
+			if npc_jaunes == NPC_needed:
 				print("QUOTA JAUNE ATTEINT - NE PLUS LAISSER ENTRER DE NPC JAUNE")
+				var replique = "La section JAUNE est complétée. Ne laisse plus entrer personne!"
+				croco_panel.croco_parle(replique, "good")
 				audio_full.play()
-			if npc_jaunes <= 25:
+			if npc_jaunes <= NPC_needed:
 				if repertoire_acces_interdit.has(accessoire_1_index) or repertoire_acces_interdit.has(accessoire_2_index):
 					print("accessoire interdit")
 					vies_joueur -= 1
 					audio_fail.play()
+					var replique = "Imbécile, t'as vu ce qu'il y avait dans ses mains? "
+					croco_panel.croco_parle(replique, "bad")
 					if vies_joueur < 1:
 						game_over = true
 				else:
 					var win_sound_array = [audio_ok, audio_ok_2, audio_ok_3]
 					var win_sound_choisi = win_sound_array.pick_random()
 					win_sound_choisi.play()
+					var replique = "Bien joué! Il manque encore " + str(NPC_needed - npc_jaunes) + " personnes dans la section jaune."
+					croco_panel.croco_parle(replique, "good")
 					copy_bonhomme("jaune")
 		else:
 			print("MAUVAISE FILE : - 1 vie")
 			vies_joueur -= 1
 			audio_fail.play()
+			var replique = "T'as de la difficulté avec tes couleurs ou quoi? Mauvaise file."
+			croco_panel.croco_parle(replique, "bad")
 			if vies_joueur < 1:
 				game_over = true
 	if reponse_joueur == "orange":
 		if vetements_index == 0 or vetements_index == 5:
 			npc_orange += 1
-			if npc_orange > 25 :
+			if npc_orange > NPC_needed :
 				print("QUOTA DÉPASSÉ : - 1 vie")
+				var replique = "Cette section est déjà complétée idiot!"
+				croco_panel.croco_parle(replique, "bad")
 				vies_joueur -= 1
 				audio_fail.play()
 				if vies_joueur < 1:
 					game_over = true
-			if npc_orange == 25:
+			if npc_orange == NPC_needed:
 				audio_full.play()
 				print("QUOTA ORANGE ATTEINT - NE PLUS LAISSER ENTRER DE NPC ORANGE")
-			if npc_orange <= 25:
+				var replique = "La section ORANGE est complétée. Ne laisse plus entrer personne!"
+				croco_panel.croco_parle(replique, "good")
+			if npc_orange <= NPC_needed:
 				if repertoire_acces_interdit.has(accessoire_1_index) or repertoire_acces_interdit.has(accessoire_2_index):
 					print("accessoire interdit")
+					var replique = "Imbécile, t'as vu ce qu'il y avait dans ses mains? "
+					croco_panel.croco_parle(replique, "bad")
 					vies_joueur -= 1
 					audio_fail.play()
 					if vies_joueur < 1:
@@ -344,26 +380,40 @@ func verifier_bonhomme(reponse_joueur):
 					var win_sound_array = [audio_ok, audio_ok_2, audio_ok_3]
 					var win_sound_choisi = win_sound_array.pick_random()
 					win_sound_choisi.play()
+					var replique = "Bien joué! Il manque encore " + str(NPC_needed - npc_orange) + " personnes dans la section orange."
+					croco_panel.croco_parle(replique, "good")
 					copy_bonhomme("orange")
 		else:
 			print("MAUVAISE FILE : - 1 vie")
 			vies_joueur -= 1
 			audio_fail.play()
+			var replique = "T'as de la difficulté avec tes couleurs ou quoi? Mauvaise file."
+			croco_panel.croco_parle(replique, "bad")
 			if vies_joueur < 0:
 				game_over = true
-		
+			
 	
 	update_the_ui()
 	
 	
 	if reponse_joueur == "rejet":
 		print("personnage rejeté")
+		var repliques_rejet = ["Fais de l'air", "Va jouer ailleurs", "Pas besoin de toi", "Dégage!"]
+		var replique = repliques_rejet.pick_random()
+		croco_panel.croco_parle(replique, "normal")
 		var zap_array = [audio_zap, audio_zap_2, audio_zap_3]
 		var zap_choisi = zap_array.pick_random()
 		zap_choisi.play()
-	bonhomme.hide()
+	
+	
+	## faire disparaître le bonhomme et en respawner un autre
+	var NPC = spawn_node.get_child(0)
+	NPC.byebye_bonhomme()
+	
 	if game_over == false:
-		bonhomme_random()
+		waiting_bonhomme = true
+		spawn_timer.wait_time = 1
+		spawn_timer.start()
 	
 
 
@@ -407,3 +457,25 @@ func copy_bonhomme(couleur: String):
 	fiche_bonhomme.append(cheveux.modulate)
 	var section_couleur = couleur
 	plateau.placer_bonhomme(section_couleur, fiche_bonhomme)
+	
+	
+func infos_bonhomme():
+	var fiche_bonhomme = []
+	fiche_bonhomme.append(peau.modulate)
+	fiche_bonhomme.append(vetements.frame)
+	fiche_bonhomme.append(oreilles.frame)
+	fiche_bonhomme.append(tete.frame)
+	fiche_bonhomme.append(yeux.frame)
+	fiche_bonhomme.append(yeux_couleur.modulate)
+	fiche_bonhomme.append(nez.frame)
+	fiche_bonhomme.append(bouche.frame)
+	fiche_bonhomme.append(cheveux.frame)
+	fiche_bonhomme.append(accessoires_1.frame)
+	fiche_bonhomme.append(accessoires_2.frame)
+	fiche_bonhomme.append(cheveux.modulate)
+	return fiche_bonhomme
+
+
+func _on_spawn_timer_timeout() -> void:
+	bonhomme_random()
+	waiting_bonhomme = false

@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://beoofw6gnd2vs"]
+
+[ext_resource type="Script" path="res://croco_panel.gd" id="1_vhdfr"]
+[ext_resource type="SpriteFrames" uid="uid://b8u3pwq845rex" path="res://Visuel/crocojack.res" id="1_vuhkl"]
+[ext_resource type="SpriteFrames" uid="uid://cqx7034nvndib" path="res://Visuel/poucecroco.res" id="2_w77gy"]
+[ext_resource type="SpriteFrames" uid="uid://cdy8bor0te8h8" path="res://Visuel/philactere.res" id="3_wmn5h"]
+[ext_resource type="FontFile" uid="uid://cw118xw0al4w0" path="res://fonts/BaksoSapi.otf" id="4_p3hms"]
+
+[node name="croco_panel" type="Node2D"]
+script = ExtResource("1_vhdfr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_right = 1151.0
+offset_bottom = 649.0
+
+[node name="crocojack" type="Node2D" parent="."]
+position = Vector2(972, 240)
+scale = Vector2(0.445, 0.445)
+
+[node name="crocojack_sprite" type="AnimatedSprite2D" parent="crocojack"]
+sprite_frames = ExtResource("1_vuhkl")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.454044
+
+[node name="pouce_sprite" type="AnimatedSprite2D" parent="crocojack"]
+sprite_frames = ExtResource("2_w77gy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(597, 373)
+scale = Vector2(0.58, 0.58)
+sprite_frames = ExtResource("3_wmn5h")
+
+[node name="chat_croco" type="Label" parent="AnimatedSprite2D"]
+offset_left = -712.0
+offset_top = -310.0
+offset_right = 236.0
+offset_bottom = 179.0
+theme_override_colors/font_color = Color(0.628379, 0.156832, 0.869905, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("4_p3hms")
+theme_override_font_sizes/font_size = 74
+text = "Bravo du con bien joué !!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

@@ -16,7 +16,7 @@
 script = ExtResource("1_onbfc")
 
 [node name="bonhomme" type="Node2D" parent="."]
-position = Vector2(126, -31)
+position = Vector2(123, 6)
 scale = Vector2(0.53, 0.53)
 
 [node name="Corps" type="Node2D" parent="bonhomme"]

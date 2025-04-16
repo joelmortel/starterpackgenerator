@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cdmghfmx74sd3"]
+[gd_scene load_steps=25 format=3 uid="uid://cdmghfmx74sd3"]
 
 [ext_resource type="Script" path="res://jeu.gd" id="1_sp1r3"]
 [ext_resource type="SpriteFrames" uid="uid://wymmannlca2h" path="res://Visuel/corps.res" id="2_8ij2y"]
@@ -12,6 +12,7 @@
 [ext_resource type="SpriteFrames" uid="uid://coswm6ib42uhs" path="res://Visuel/cheveux.res" id="10_j86qu"]
 [ext_resource type="SpriteFrames" uid="uid://c7b8p6011e1w6" path="res://Visuel/accessoires.res" id="11_twxa0"]
 [ext_resource type="AudioStream" uid="uid://bp7c2v5mguosl" path="res://audio/oksound.wav" id="12_2d2df"]
+[ext_resource type="PackedScene" uid="uid://beoofw6gnd2vs" path="res://croco_panel.tscn" id="12_enyp4"]
 [ext_resource type="AudioStream" uid="uid://bdiri8oph6e55" path="res://audio/oksound2.wav" id="13_613sa"]
 [ext_resource type="AudioStream" uid="uid://bavpnif7yegqs" path="res://audio/zap.wav" id="13_h18yl"]
 [ext_resource type="AudioStream" uid="uid://wtfv32b4m8by" path="res://audio/fail.wav" id="13_s5uoj"]
@@ -21,13 +22,15 @@
 [ext_resource type="AudioStream" uid="uid://dbrf54gr4tq4h" path="res://audio/full.wav" id="19_pr61v"]
 [ext_resource type="AudioStream" uid="uid://b5j4y7xvheluf" path="res://audio/casting_theme.wav" id="20_cwtt4"]
 [ext_resource type="PackedScene" uid="uid://bo7hg4bprd4bg" path="res://plateau.tscn" id="21_fxvn6"]
+[ext_resource type="PackedScene" uid="uid://2mv4y17rnlb4" path="res://bonhomme_basic.tscn" id="22_cw1ek"]
+[ext_resource type="Script" path="res://bonhomme_arrive.gd" id="23_jj3ad"]
 
 [node name="jeu" type="Node2D"]
 script = ExtResource("1_sp1r3")
 
 [node name="bonhomme" type="Node2D" parent="."]
-position = Vector2(425, 345)
-scale = Vector2(0.53, 0.53)
+position = Vector2(401, 350)
+scale = Vector2(0.505, 0.505)
 
 [node name="Corps" type="Node2D" parent="bonhomme"]
 position = Vector2(-233, 64)
@@ -102,6 +105,7 @@ frame = 16
 one_shot = true
 
 [node name="UICHEAP" type="Node2D" parent="."]
+position = Vector2(140, -121)
 
 [node name="ColorRect" type="ColorRect" parent="UICHEAP"]
 offset_left = 494.0
@@ -192,6 +196,10 @@ text = "VIES VIES VIES VIES VIES "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="croco_panel" parent="UICHEAP" instance=ExtResource("12_enyp4")]
+position = Vector2(269, 452)
+scale = Vector2(0.49, 0.49)
+
 [node name="Audio" type="Node2D" parent="."]
 
 [node name="audio_ok" type="AudioStreamPlayer" parent="Audio"]
@@ -223,10 +231,21 @@ stream = ExtResource("20_cwtt4")
 autoplay = true
 
 [node name="plateau" parent="." instance=ExtResource("21_fxvn6")]
-position = Vector2(835, 473)
-scale = Vector2(0.245, 0.245)
+visible = false
+position = Vector2(3, -1)
+
+[node name="bonhomme_basic" parent="." instance=ExtResource("22_cw1ek")]
+position = Vector2(-152, 300)
+script = ExtResource("23_jj3ad")
+
+[node name="spawn_node" type="Node2D" parent="."]
+
+[node name="spawn_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="timeout" from="Timer_game" to="." method="_on_timer_game_timeout"]
 [connection signal="pressed" from="UICHEAP/ColorRect/bouton_jaune" to="." method="_on_bouton_jaune_pressed"]
 [connection signal="pressed" from="UICHEAP/ColorRect/bouton_orange" to="." method="_on_bouton_orange_pressed"]
 [connection signal="pressed" from="UICHEAP/ColorRect/bouton_rejet" to="." method="_on_bouton_rejet_pressed"]
+[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
