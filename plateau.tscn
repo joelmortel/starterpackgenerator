@@ -18,304 +18,216 @@ position = Vector2(-171, -6)
 position = Vector2(371, 109)
 
 [node name="bonhomme_basic" parent="banane/banane_00" instance=ExtResource("1_d8fo4")]
+position = Vector2(-487, 43)
 scale = Vector2(0.25, 0.25)
 
 [node name="banane_01" type="Marker2D" parent="banane"]
 position = Vector2(320, 148)
 
 [node name="bonhomme_basic" parent="banane/banane_01" instance=ExtResource("1_d8fo4")]
+position = Vector2(0, -673)
 scale = Vector2(0.25, 0.25)
 
 [node name="banane_02" type="Marker2D" parent="banane"]
 position = Vector2(278, 221)
 
 [node name="bonhomme_basic" parent="banane/banane_02" instance=ExtResource("1_d8fo4")]
+position = Vector2(0, -673)
 scale = Vector2(0.25, 0.25)
 
 [node name="banane_03" type="Marker2D" parent="banane"]
 position = Vector2(244, 300)
 
 [node name="bonhomme_basic" parent="banane/banane_03" instance=ExtResource("1_d8fo4")]
+position = Vector2(0, -673)
 scale = Vector2(0.25, 0.25)
 
 [node name="banane_04" type="Marker2D" parent="banane"]
 position = Vector2(245, 403)
 
 [node name="bonhomme_basic" parent="banane/banane_04" instance=ExtResource("1_d8fo4")]
+position = Vector2(0, -673)
 scale = Vector2(0.25, 0.25)
 
 [node name="banane_05" type="Marker2D" parent="banane"]
 position = Vector2(272, 503)
 
 [node name="bonhomme_basic" parent="banane/banane_05" instance=ExtResource("1_d8fo4")]
+position = Vector2(568, 484)
 scale = Vector2(0.25, 0.25)
 
 [node name="banane_06" type="Marker2D" parent="banane"]
 position = Vector2(317, 588)
 
 [node name="bonhomme_basic" parent="banane/banane_06" instance=ExtResource("1_d8fo4")]
+position = Vector2(0, -673)
 scale = Vector2(0.25, 0.25)
 
 [node name="banane_07" type="Marker2D" parent="banane"]
 position = Vector2(390, 586)
 
 [node name="bonhomme_basic" parent="banane/banane_07" instance=ExtResource("1_d8fo4")]
+position = Vector2(737, 382)
 scale = Vector2(0.25, 0.25)
 
 [node name="banane_08" type="Marker2D" parent="banane"]
 position = Vector2(336, 489)
 
 [node name="bonhomme_basic" parent="banane/banane_08" instance=ExtResource("1_d8fo4")]
+position = Vector2(-76, 386)
 scale = Vector2(0.25, 0.25)
 
 [node name="banane_09" type="Marker2D" parent="banane"]
 position = Vector2(303, 377)
 
 [node name="bonhomme_basic" parent="banane/banane_09" instance=ExtResource("1_d8fo4")]
+position = Vector2(-309, 18)
 scale = Vector2(0.25, 0.25)
 
 [node name="banane_10" type="Marker2D" parent="banane"]
 position = Vector2(325, 271)
 
 [node name="bonhomme_basic" parent="banane/banane_10" instance=ExtResource("1_d8fo4")]
+position = Vector2(1314, 5)
 scale = Vector2(0.25, 0.25)
 
 [node name="banane_11" type="Marker2D" parent="banane"]
 position = Vector2(380, 209)
 
 [node name="bonhomme_basic" parent="banane/banane_11" instance=ExtResource("1_d8fo4")]
+position = Vector2(1263, 323)
 scale = Vector2(0.25, 0.25)
 
 [node name="banane_12" type="Marker2D" parent="banane"]
 position = Vector2(435, 92)
 
 [node name="bonhomme_basic" parent="banane/banane_12" instance=ExtResource("1_d8fo4")]
+position = Vector2(259, 789)
 scale = Vector2(0.25, 0.25)
 
 [node name="banane_13" type="Marker2D" parent="banane"]
 position = Vector2(496, 82)
 
 [node name="bonhomme_basic" parent="banane/banane_13" instance=ExtResource("1_d8fo4")]
+position = Vector2(0, -673)
 scale = Vector2(0.25, 0.25)
 
 [node name="banane_14" type="Marker2D" parent="banane"]
 position = Vector2(552, 83)
 
 [node name="bonhomme_basic" parent="banane/banane_14" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="banane_15" type="Marker2D" parent="banane"]
-position = Vector2(429, 192)
-
-[node name="bonhomme_basic" parent="banane/banane_15" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="banane_16" type="Marker2D" parent="banane"]
-position = Vector2(685, 77)
-
-[node name="bonhomme_basic" parent="banane/banane_16" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="banane_17" type="Marker2D" parent="banane"]
-position = Vector2(372, 412)
-
-[node name="bonhomme_basic" parent="banane/banane_17" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="banane_18" type="Marker2D" parent="banane"]
-position = Vector2(407, 490)
-
-[node name="bonhomme_basic" parent="banane/banane_18" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="banane_19" type="Marker2D" parent="banane"]
-position = Vector2(440, 610)
-
-[node name="bonhomme_basic" parent="banane/banane_19" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="banane_20" type="Marker2D" parent="banane"]
-position = Vector2(499, 609)
-
-[node name="bonhomme_basic" parent="banane/banane_20" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="banane_21" type="Marker2D" parent="banane"]
-position = Vector2(558, 605)
-
-[node name="bonhomme_basic" parent="banane/banane_21" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="banane_22" type="Marker2D" parent="banane"]
-position = Vector2(615, 81)
-
-[node name="bonhomme_basic" parent="banane/banane_22" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="banane_23" type="Marker2D" parent="banane"]
-position = Vector2(456, 508)
-
-[node name="bonhomme_basic" parent="banane/banane_23" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="banane_24" type="Marker2D" parent="banane"]
-position = Vector2(618, 604)
-
-[node name="bonhomme_basic" parent="banane/banane_24" instance=ExtResource("1_d8fo4")]
+position = Vector2(1305, 73)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange" type="Node2D" parent="."]
 position = Vector2(392, 243)
 
 [node name="orange_00" type="Marker2D" parent="orange"]
-position = Vector2(567, 164)
+position = Vector2(516, -24)
 
 [node name="bonhomme_basic" parent="orange/orange_00" instance=ExtResource("1_d8fo4")]
+position = Vector2(746, 310)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange_01" type="Marker2D" parent="orange"]
-position = Vector2(619, 130)
+position = Vector2(287, 45)
 
 [node name="bonhomme_basic" parent="orange/orange_01" instance=ExtResource("1_d8fo4")]
+position = Vector2(1182, 69)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange_02" type="Marker2D" parent="orange"]
-position = Vector2(566, 31)
+position = Vector2(533, 149)
 
 [node name="bonhomme_basic" parent="orange/orange_02" instance=ExtResource("1_d8fo4")]
+position = Vector2(-1615, -220)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange_03" type="Marker2D" parent="orange"]
-position = Vector2(517, 99)
+position = Vector2(298, 149)
 
 [node name="bonhomme_basic" parent="orange/orange_03" instance=ExtResource("1_d8fo4")]
+position = Vector2(-530, 692)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange_04" type="Marker2D" parent="orange"]
-position = Vector2(512, 207)
+position = Vector2(356, 79)
 
 [node name="bonhomme_basic" parent="orange/orange_04" instance=ExtResource("1_d8fo4")]
+position = Vector2(576, -3)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange_05" type="Marker2D" parent="orange"]
-position = Vector2(569, 267)
+position = Vector2(504, 224)
 
 [node name="bonhomme_basic" parent="orange/orange_05" instance=ExtResource("1_d8fo4")]
+position = Vector2(-606, 454)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange_06" type="Marker2D" parent="orange"]
-position = Vector2(624, 233)
+position = Vector2(328, 224)
 
 [node name="bonhomme_basic" parent="orange/orange_06" instance=ExtResource("1_d8fo4")]
+position = Vector2(0, -673)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange_07" type="Marker2D" parent="orange"]
-position = Vector2(674, 134)
+position = Vector2(487, 61)
 
 [node name="bonhomme_basic" parent="orange/orange_07" instance=ExtResource("1_d8fo4")]
+position = Vector2(4, 564)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange_08" type="Marker2D" parent="orange"]
-position = Vector2(580, -66)
+position = Vector2(362, -33)
 
 [node name="bonhomme_basic" parent="orange/orange_08" instance=ExtResource("1_d8fo4")]
-position = Vector2(-50, 29)
+position = Vector2(0, -673)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange_09" type="Marker2D" parent="orange"]
-position = Vector2(626, 24)
+position = Vector2(555, 66)
 
 [node name="bonhomme_basic" parent="orange/orange_09" instance=ExtResource("1_d8fo4")]
+position = Vector2(-1437, 323)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange_10" type="Marker2D" parent="orange"]
-position = Vector2(505, -78)
+position = Vector2(426, -84)
 
 [node name="bonhomme_basic" parent="orange/orange_10" instance=ExtResource("1_d8fo4")]
-position = Vector2(-24, 0)
+position = Vector2(-1280, 22)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange_11" type="Marker2D" parent="orange"]
-position = Vector2(473, 26)
+position = Vector2(419, 14)
 
 [node name="bonhomme_basic" parent="orange/orange_11" instance=ExtResource("1_d8fo4")]
+position = Vector2(-1081, 353)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange_12" type="Marker2D" parent="orange"]
-position = Vector2(464, 120)
+position = Vector2(382, 154)
 
 [node name="bonhomme_basic" parent="orange/orange_12" instance=ExtResource("1_d8fo4")]
+position = Vector2(-1106, -75)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange_13" type="Marker2D" parent="orange"]
-position = Vector2(460, 218)
+position = Vector2(452, 140)
 
 [node name="bonhomme_basic" parent="orange/orange_13" instance=ExtResource("1_d8fo4")]
+position = Vector2(810, -24)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange_14" type="Marker2D" parent="orange"]
-position = Vector2(505, 302)
+position = Vector2(407, 269)
 
 [node name="bonhomme_basic" parent="orange/orange_14" instance=ExtResource("1_d8fo4")]
+position = Vector2(-390, 560)
 scale = Vector2(0.25, 0.25)
 
-[node name="orange_15" type="Marker2D" parent="orange"]
-position = Vector2(455, 316)
+[node name="timer_sequenceur" type="Timer" parent="."]
+one_shot = true
 
-[node name="bonhomme_basic" parent="orange/orange_15" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="orange_16" type="Marker2D" parent="orange"]
-position = Vector2(406, 273)
-
-[node name="bonhomme_basic" parent="orange/orange_16" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="orange_17" type="Marker2D" parent="orange"]
-position = Vector2(349, 252)
-
-[node name="bonhomme_basic" parent="orange/orange_17" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="orange_18" type="Marker2D" parent="orange"]
-position = Vector2(407, 160)
-
-[node name="bonhomme_basic" parent="orange/orange_18" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="orange_19" type="Marker2D" parent="orange"]
-position = Vector2(340, 145)
-
-[node name="bonhomme_basic" parent="orange/orange_19" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="orange_20" type="Marker2D" parent="orange"]
-position = Vector2(408, 55)
-
-[node name="bonhomme_basic" parent="orange/orange_20" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="orange_21" type="Marker2D" parent="orange"]
-position = Vector2(318, -18)
-
-[node name="bonhomme_basic" parent="orange/orange_21" instance=ExtResource("1_d8fo4")]
-position = Vector2(31, 64)
-scale = Vector2(0.25, 0.25)
-
-[node name="orange_22" type="Marker2D" parent="orange"]
-position = Vector2(406, -49)
-
-[node name="bonhomme_basic" parent="orange/orange_22" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="orange_23" type="Marker2D" parent="orange"]
-position = Vector2(292, 227)
-
-[node name="bonhomme_basic" parent="orange/orange_23" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
-
-[node name="orange_24" type="Marker2D" parent="orange"]
-position = Vector2(280, 133)
-
-[node name="bonhomme_basic" parent="orange/orange_24" instance=ExtResource("1_d8fo4")]
-scale = Vector2(0.25, 0.25)
+[connection signal="timeout" from="timer_sequenceur" to="." method="_on_timer_sequenceur_timeout"]

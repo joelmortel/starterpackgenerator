@@ -38,6 +38,8 @@ extends Node2D
 @onready var audio_ok_2: AudioStreamPlayer = $Audio/audio_ok2
 @onready var audio_ok_3: AudioStreamPlayer = $Audio/audio_ok3
 @onready var audio_full: AudioStreamPlayer = $Audio/audio_full
+@onready var audio_win: AudioStreamPlayer = $Audio/audio_win
+@onready var audio_musique: AudioStreamPlayer = $Audio/audio_musique
 
 @onready var plateau: Node2D = $plateau
 
@@ -48,7 +50,7 @@ extends Node2D
 @onready var croco_panel: Node2D = $UICHEAP/croco_panel
 
 
-var bonhomme_basic = preload("res://bonhomme_arrive.tscn")
+var bonhomme_arrive = preload("res://bonhomme_arrive.tscn")
 
 var tete_index = 0
 var yeux_index = 0
@@ -90,9 +92,12 @@ var accessoire_2_index = 0
 
 ## variables jeu du portier
 
+var orangefull = false
+var jaunefull = false
+
 var vies_joueur = 3
 
-var NPC_needed = 15
+var NPC_needed = 5
 
 var game_time = 120
 var temps_restant = 0
@@ -259,7 +264,7 @@ func set_face():
 	accessoires_1.frame = accessoire_1_index
 	accessoires_2.frame = accessoire_2_index
 	
-	var NPC = bonhomme_basic.instantiate()
+	var NPC = bonhomme_arrive.instantiate()
 	spawn_node.add_child(NPC)
 	NPC.global_position = Vector2(-150, 300)
 	var fiche = infos_bonhomme()
@@ -324,9 +329,19 @@ func verifier_bonhomme(reponse_joueur):
 					game_over = true
 			if npc_jaunes == NPC_needed:
 				print("QUOTA JAUNE ATTEINT - NE PLUS LAISSER ENTRER DE NPC JAUNE")
-				var replique = "La section JAUNE est complétée. Ne laisse plus entrer personne!"
-				croco_panel.croco_parle(replique, "good")
-				audio_full.play()
+				if orangefull == true:
+					copy_bonhomme("jaune")
+					var replique = "Oh! Bordel! T'as fait un sacré bon boulot!"
+					croco_panel.croco_parle(replique, "good")
+					audio_musique.stop()
+					audio_win.play()
+					plateau.play_video()
+					return
+				elif orangefull == false:
+					jaunefull = true
+					var replique = "La section JAUNE est complétée. Ne laisse plus entrer personne!"
+					croco_panel.croco_parle(replique, "good")
+					audio_full.play()
 			if npc_jaunes <= NPC_needed:
 				if repertoire_acces_interdit.has(accessoire_1_index) or repertoire_acces_interdit.has(accessoire_2_index):
 					print("accessoire interdit")
@@ -334,6 +349,7 @@ func verifier_bonhomme(reponse_joueur):
 					audio_fail.play()
 					var replique = "Imbécile, t'as vu ce qu'il y avait dans ses mains? "
 					croco_panel.croco_parle(replique, "bad")
+					copy_bonhomme("jaune")
 					if vies_joueur < 1:
 						game_over = true
 				else:
@@ -363,15 +379,26 @@ func verifier_bonhomme(reponse_joueur):
 				if vies_joueur < 1:
 					game_over = true
 			if npc_orange == NPC_needed:
-				audio_full.play()
-				print("QUOTA ORANGE ATTEINT - NE PLUS LAISSER ENTRER DE NPC ORANGE")
-				var replique = "La section ORANGE est complétée. Ne laisse plus entrer personne!"
-				croco_panel.croco_parle(replique, "good")
+				if jaunefull == true:
+					copy_bonhomme("orange")
+					var replique = "Oh! Bordel! T'as fait un sacré bon boulot!"
+					croco_panel.croco_parle(replique, "good")
+					audio_musique.stop()
+					audio_win.play()
+					plateau.play_video()
+					return
+				elif jaunefull == false:
+					orangefull = true
+					audio_full.play()
+					print("QUOTA ORANGE ATTEINT - NE PLUS LAISSER ENTRER DE NPC ORANGE")
+					var replique = "La section ORANGE est complétée. Ne laisse plus entrer personne!"
+					croco_panel.croco_parle(replique, "good")
 			if npc_orange <= NPC_needed:
 				if repertoire_acces_interdit.has(accessoire_1_index) or repertoire_acces_interdit.has(accessoire_2_index):
 					print("accessoire interdit")
 					var replique = "Imbécile, t'as vu ce qu'il y avait dans ses mains? "
 					croco_panel.croco_parle(replique, "bad")
+					copy_bonhomme("orange")
 					vies_joueur -= 1
 					audio_fail.play()
 					if vies_joueur < 1:

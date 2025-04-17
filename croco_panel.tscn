@@ -22,7 +22,7 @@ scale = Vector2(0.445, 0.445)
 sprite_frames = ExtResource("1_vuhkl")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.454044
+frame_progress = 0.808677
 
 [node name="pouce_sprite" type="AnimatedSprite2D" parent="crocojack"]
 sprite_frames = ExtResource("2_w77gy")

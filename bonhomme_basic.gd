@@ -14,6 +14,34 @@ extends Node2D
 @onready var accessoires_2: AnimatedSprite2D = $bonhomme/Accessoires/accessoires2
 
 
+
+## couleurs de peau
+
+var couleur_mauve = Color8(195, 178, 255)
+var couleur_bleu = Color8(162, 186, 255)
+var couleur_rose = Color8(227, 178, 255)
+var couleur_jaune = Color8(255, 243, 146)
+var couleur_brun = Color8(121, 65, 0)
+
+## couleurs cheveux
+
+var couleur_orange = Color8(255, 121, 48)
+var roserose = Color8(243, 97, 255)
+var jaunejaune = Color8(235, 211, 32)
+var couleur_vert = Color8(73, 170, 16)
+var chatain = Color8(195, 113, 0)
+
+## couleurs yeux
+
+var bleubleu = Color8(65, 65, 255)
+var brunbrun = Color8(195, 113, 0)
+var vertvert = Color8(113, 243, 65)
+
+
+
+
+
+
 func _ready() -> void:
 	hide()
 
@@ -33,3 +61,9 @@ func remake_bonhomme(fiche_technique: Array):
 	accessoires_2.frame = fiche_technique[10]
 	cheveux.modulate = fiche_technique[11]
 	oreilles.modulate = fiche_technique[0]
+	tete.modulate = fiche_technique[0]
+	var tween1 = get_tree().create_tween()
+	var tween2 = get_tree().create_tween()
+	tween1.tween_property(self, "position", Vector2(0, 0), 1)
+	tween2.tween_property(self, "rotation_degrees", 360, 1)
+	

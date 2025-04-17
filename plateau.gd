@@ -19,16 +19,7 @@ extends Node2D
 @onready var banane_12: Marker2D = $banane/banane_12
 @onready var banane_13: Marker2D = $banane/banane_13
 @onready var banane_14: Marker2D = $banane/banane_14
-@onready var banane_15: Marker2D = $banane/banane_15
-@onready var banane_16: Marker2D = $banane/banane_16
-@onready var banane_17: Marker2D = $banane/banane_17
-@onready var banane_18: Marker2D = $banane/banane_18
-@onready var banane_19: Marker2D = $banane/banane_19
-@onready var banane_20: Marker2D = $banane/banane_20
-@onready var banane_21: Marker2D = $banane/banane_21
-@onready var banane_22: Marker2D = $banane/banane_22
-@onready var banane_23: Marker2D = $banane/banane_23
-@onready var banane_24: Marker2D = $banane/banane_24
+
 
 
 ## oranges
@@ -48,16 +39,13 @@ extends Node2D
 @onready var orange_12: Marker2D = $orange/orange_12
 @onready var orange_13: Marker2D = $orange/orange_13
 @onready var orange_14: Marker2D = $orange/orange_14
-@onready var orange_15: Marker2D = $orange/orange_15
-@onready var orange_16: Marker2D = $orange/orange_16
-@onready var orange_17: Marker2D = $orange/orange_17
-@onready var orange_18: Marker2D = $orange/orange_18
-@onready var orange_19: Marker2D = $orange/orange_19
-@onready var orange_20: Marker2D = $orange/orange_20
-@onready var orange_21: Marker2D = $orange/orange_21
-@onready var orange_22: Marker2D = $orange/orange_22
-@onready var orange_23: Marker2D = $orange/orange_23
-@onready var orange_24: Marker2D = $orange/orange_24
+
+
+
+@onready var timer_sequenceur: Timer = $timer_sequenceur
+
+
+
 
 
 var orange_array = []
@@ -68,31 +56,87 @@ var banana_array = []
 var jaune_index = 0
 var orange_index = 0
 
+var time_index = 0
+
+var time_checking = false
+
+var spawn_index = 0
+
+var repertoire_temps = {
+	"couleur" : [],
+	"fiche" : [],
+	"temps" : []
+}
+
 
 func _ready() -> void:
 	create_arrays()
-
+	timer_sequenceur.wait_time = 1
+	timer_sequenceur.start()
+	
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		show()
+		play_video()
+	
 
 
 func placer_bonhomme(couleur: String, fiche: Array):
-	if couleur == "jaune":
+	repertoire_temps["couleur"].append(couleur)
+	repertoire_temps["fiche"].append(fiche)
+	repertoire_temps["temps"].append(time_index)
+	print(repertoire_temps)
+		
+	
+	
+func reproduire_video():
+	var fiche = repertoire_temps["fiche"]
+	var couleur = repertoire_temps["couleur"]
+	
+	if couleur[spawn_index] == "jaune":
+		print("JAUNE DETECTED")
 		var spot_fruit = banana_array[jaune_index]
 		var fruit = spot_fruit.get_child(0)
-		fruit.remake_bonhomme(fiche)
+		fruit.remake_bonhomme(fiche[spawn_index])
 		jaune_index += 1
-	if couleur == "orange":
+	if couleur[spawn_index] == "orange":
+		print("ORANGE DETECTED")
 		var spot_fruit = orange_array[orange_index]
+		
 		var fruit = spot_fruit.get_child(0)
-		fruit.remake_bonhomme(fiche)
+		fruit.remake_bonhomme(fiche[spawn_index])
 		orange_index += 1
+		
+	
+	
+	
+	
+	spawn_index += 1
 		
 func create_arrays():
 	var temp_banana = [banane_00, banane_01, banane_02, banane_03, banane_04, banane_05, banane_06, banane_07,
-	banane_08, banane_09, banane_10, banane_11, banane_12, banane_13, banane_14, banane_15, banane_16, banane_17,
-	banane_18, banane_19, banane_20, banane_21, banane_22, banane_23, banane_24]
+	banane_08, banane_09, banane_10, banane_11, banane_12, banane_13, banane_14]
 	banana_array.append_array(temp_banana)
 	
 	var temp_orange = [orange_00, orange_01, orange_02, orange_03, orange_04, orange_05, orange_06, orange_07,
-	orange_08, orange_09, orange_10, orange_11, orange_12, orange_13, orange_14, orange_15, orange_16, orange_17,
-	orange_18, orange_19, orange_20, orange_21, orange_22, orange_23, orange_24]
+	orange_08, orange_09, orange_10, orange_11, orange_12, orange_13, orange_14]
 	orange_array.append_array(temp_orange)
+
+
+func _on_timer_sequenceur_timeout() -> void:
+	time_index += 1
+	
+	if time_checking == true:	
+		if repertoire_temps["temps"].has(time_index):
+			reproduire_video()
+	if time_index < 120:
+		timer_sequenceur.wait_time = 1
+		timer_sequenceur.start()
+
+func play_video():
+	show()
+	time_checking = true
+	time_index = 0
+	timer_sequenceur.wait_time = 1
+	timer_sequenceur.start()
+	

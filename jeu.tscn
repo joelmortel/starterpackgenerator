@@ -226,13 +226,12 @@ stream = ExtResource("16_qlemp")
 [node name="audio_full" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("19_pr61v")
 
+[node name="audio_win" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("19_pr61v")
+
 [node name="audio_musique" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("20_cwtt4")
 autoplay = true
-
-[node name="plateau" parent="." instance=ExtResource("21_fxvn6")]
-visible = false
-position = Vector2(3, -1)
 
 [node name="bonhomme_basic" parent="." instance=ExtResource("22_cw1ek")]
 position = Vector2(-152, 300)
@@ -243,6 +242,10 @@ script = ExtResource("23_jj3ad")
 [node name="spawn_timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="plateau" parent="." instance=ExtResource("21_fxvn6")]
+visible = false
+position = Vector2(3, -1)
 
 [connection signal="timeout" from="Timer_game" to="." method="_on_timer_game_timeout"]
 [connection signal="pressed" from="UICHEAP/ColorRect/bouton_jaune" to="." method="_on_bouton_jaune_pressed"]
