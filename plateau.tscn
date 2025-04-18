@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bo7hg4bprd4bg"]
+[gd_scene load_steps=7 format=3 uid="uid://bo7hg4bprd4bg"]
 
 [ext_resource type="PackedScene" uid="uid://2mv4y17rnlb4" path="res://bonhomme_basic.tscn" id="1_d8fo4"]
 [ext_resource type="Script" path="res://plateau.gd" id="1_ye7f7"]
+[ext_resource type="SpriteFrames" uid="uid://cixacd2r68n2r" path="res://Visuel/spectacle.res" id="3_1m57l"]
+[ext_resource type="SpriteFrames" uid="uid://cb5bv18p1myhk" path="res://Visuel/chanteur.res" id="3_dw0ug"]
+[ext_resource type="AudioStream" uid="uid://diun27glnbud1" path="res://audio/bananaorange.wav" id="5_bkyuo"]
+[ext_resource type="FontFile" uid="uid://cw118xw0al4w0" path="res://fonts/BaksoSapi.otf" id="6_fqvsm"]
 
 [node name="plateau" type="Node2D"]
 script = ExtResource("1_ye7f7")
@@ -10,6 +14,18 @@ script = ExtResource("1_ye7f7")
 offset_left = 1.0
 offset_right = 1153.0
 offset_bottom = 651.0
+
+[node name="stage_scene" type="AnimatedSprite2D" parent="."]
+position = Vector2(566.8, 343.2)
+scale = Vector2(0.73, 0.73)
+sprite_frames = ExtResource("3_1m57l")
+
+[node name="chanteur" type="AnimatedSprite2D" parent="."]
+position = Vector2(539.6, 259.4)
+scale = Vector2(0.07, 0.07)
+sprite_frames = ExtResource("3_dw0ug")
+autoplay = "default"
+frame_progress = 0.909094
 
 [node name="banane" type="Node2D" parent="."]
 position = Vector2(-171, -6)
@@ -78,59 +94,24 @@ position = Vector2(-76, 386)
 scale = Vector2(0.25, 0.25)
 
 [node name="banane_09" type="Marker2D" parent="banane"]
-position = Vector2(303, 377)
+position = Vector2(374, 181)
 
 [node name="bonhomme_basic" parent="banane/banane_09" instance=ExtResource("1_d8fo4")]
 position = Vector2(-309, 18)
 scale = Vector2(0.25, 0.25)
 
-[node name="banane_10" type="Marker2D" parent="banane"]
-position = Vector2(325, 271)
-
-[node name="bonhomme_basic" parent="banane/banane_10" instance=ExtResource("1_d8fo4")]
-position = Vector2(1314, 5)
-scale = Vector2(0.25, 0.25)
-
-[node name="banane_11" type="Marker2D" parent="banane"]
-position = Vector2(380, 209)
-
-[node name="bonhomme_basic" parent="banane/banane_11" instance=ExtResource("1_d8fo4")]
-position = Vector2(1263, 323)
-scale = Vector2(0.25, 0.25)
-
-[node name="banane_12" type="Marker2D" parent="banane"]
-position = Vector2(435, 92)
-
-[node name="bonhomme_basic" parent="banane/banane_12" instance=ExtResource("1_d8fo4")]
-position = Vector2(259, 789)
-scale = Vector2(0.25, 0.25)
-
-[node name="banane_13" type="Marker2D" parent="banane"]
-position = Vector2(496, 82)
-
-[node name="bonhomme_basic" parent="banane/banane_13" instance=ExtResource("1_d8fo4")]
-position = Vector2(0, -673)
-scale = Vector2(0.25, 0.25)
-
-[node name="banane_14" type="Marker2D" parent="banane"]
-position = Vector2(552, 83)
-
-[node name="bonhomme_basic" parent="banane/banane_14" instance=ExtResource("1_d8fo4")]
-position = Vector2(1305, 73)
-scale = Vector2(0.25, 0.25)
-
 [node name="orange" type="Node2D" parent="."]
-position = Vector2(392, 243)
+position = Vector2(498, 233)
 
 [node name="orange_00" type="Marker2D" parent="orange"]
-position = Vector2(516, -24)
+position = Vector2(459, -38)
 
 [node name="bonhomme_basic" parent="orange/orange_00" instance=ExtResource("1_d8fo4")]
 position = Vector2(746, 310)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange_01" type="Marker2D" parent="orange"]
-position = Vector2(287, 45)
+position = Vector2(410, 168)
 
 [node name="bonhomme_basic" parent="orange/orange_01" instance=ExtResource("1_d8fo4")]
 position = Vector2(1182, 69)
@@ -144,7 +125,7 @@ position = Vector2(-1615, -220)
 scale = Vector2(0.25, 0.25)
 
 [node name="orange_03" type="Marker2D" parent="orange"]
-position = Vector2(298, 149)
+position = Vector2(271, 88)
 
 [node name="bonhomme_basic" parent="orange/orange_03" instance=ExtResource("1_d8fo4")]
 position = Vector2(-530, 692)
@@ -192,42 +173,30 @@ position = Vector2(555, 66)
 position = Vector2(-1437, 323)
 scale = Vector2(0.25, 0.25)
 
-[node name="orange_10" type="Marker2D" parent="orange"]
-position = Vector2(426, -84)
-
-[node name="bonhomme_basic" parent="orange/orange_10" instance=ExtResource("1_d8fo4")]
-position = Vector2(-1280, 22)
-scale = Vector2(0.25, 0.25)
-
-[node name="orange_11" type="Marker2D" parent="orange"]
-position = Vector2(419, 14)
-
-[node name="bonhomme_basic" parent="orange/orange_11" instance=ExtResource("1_d8fo4")]
-position = Vector2(-1081, 353)
-scale = Vector2(0.25, 0.25)
-
-[node name="orange_12" type="Marker2D" parent="orange"]
-position = Vector2(382, 154)
-
-[node name="bonhomme_basic" parent="orange/orange_12" instance=ExtResource("1_d8fo4")]
-position = Vector2(-1106, -75)
-scale = Vector2(0.25, 0.25)
-
-[node name="orange_13" type="Marker2D" parent="orange"]
-position = Vector2(452, 140)
-
-[node name="bonhomme_basic" parent="orange/orange_13" instance=ExtResource("1_d8fo4")]
-position = Vector2(810, -24)
-scale = Vector2(0.25, 0.25)
-
-[node name="orange_14" type="Marker2D" parent="orange"]
-position = Vector2(407, 269)
-
-[node name="bonhomme_basic" parent="orange/orange_14" instance=ExtResource("1_d8fo4")]
-position = Vector2(-390, 560)
-scale = Vector2(0.25, 0.25)
-
 [node name="timer_sequenceur" type="Timer" parent="."]
 one_shot = true
 
+[node name="audio_bananaorange" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_bkyuo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="skip_video_button" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -290.0
+offset_top = -52.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_fqvsm")
+theme_override_font_sizes/font_size = 36
+text = "Arrêter le clip"
+
 [connection signal="timeout" from="timer_sequenceur" to="." method="_on_timer_sequenceur_timeout"]
+[connection signal="finished" from="audio_bananaorange" to="." method="_on_audio_bananaorange_finished"]
+[connection signal="pressed" from="CanvasLayer/skip_video_button" to="." method="_on_skip_video_button_pressed"]

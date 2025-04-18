@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0m1sm70iuiu6"]
+
+[ext_resource type="Script" path="res://paneau_fin.gd" id="1_3lwti"]
+[ext_resource type="PackedScene" uid="uid://beoofw6gnd2vs" path="res://croco_panel.tscn" id="2_bf2le"]
+
+[node name="paneau_fin" type="Node2D"]
+scale = Vector2(0.555, 0.555)
+script = ExtResource("1_3lwti")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1180.0
+offset_bottom = 675.0
+color = Color(1, 0.847059, 1, 1)
+
+[node name="croco_panel" parent="." instance=ExtResource("2_bf2le")]
+position = Vector2(0, -19)
+
+[node name="skippy_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="skippy_timer" to="." method="_on_skippy_timer_timeout"]

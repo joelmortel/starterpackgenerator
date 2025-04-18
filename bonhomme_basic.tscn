@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2mv4y17rnlb4"]
+[gd_scene load_steps=15 format=3 uid="uid://2mv4y17rnlb4"]
 
 [ext_resource type="Script" path="res://bonhomme_basic.gd" id="1_onbfc"]
 [ext_resource type="SpriteFrames" uid="uid://wymmannlca2h" path="res://Visuel/corps.res" id="1_uiyyj"]
@@ -12,11 +12,73 @@
 [ext_resource type="SpriteFrames" uid="uid://coswm6ib42uhs" path="res://Visuel/cheveux.res" id="9_g4sw4"]
 [ext_resource type="SpriteFrames" uid="uid://c7b8p6011e1w6" path="res://Visuel/accessoires.res" id="10_oy356"]
 
+[sub_resource type="Animation" id="Animation_8whqn"]
+resource_name = "dance"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bonhomme:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.466667, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.165806, 0.0, -0.200713, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bonhomme:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(123, -10.6), Vector2(123, -34.42)]
+}
+
+[sub_resource type="Animation" id="Animation_s5hum"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bonhomme:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.165806]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bonhomme:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(123, -10.6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y71mn"]
+_data = {
+"RESET": SubResource("Animation_s5hum"),
+"dance": SubResource("Animation_8whqn")
+}
+
 [node name="bonhomme_basic" type="Node2D"]
 script = ExtResource("1_onbfc")
 
 [node name="bonhomme" type="Node2D" parent="."]
-position = Vector2(123, 6)
+position = Vector2(123, -10.6)
+rotation = 0.165806
 scale = Vector2(0.53, 0.53)
 
 [node name="Corps" type="Node2D" parent="bonhomme"]
@@ -78,12 +140,18 @@ frame = 9
 
 [node name="accessoires1" type="AnimatedSprite2D" parent="bonhomme/Accessoires"]
 position = Vector2(-379.245, 118.868)
-scale = Vector2(0.31, 0.31)
+scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("10_oy356")
 frame = 16
 
 [node name="accessoires2" type="AnimatedSprite2D" parent="bonhomme/Accessoires"]
 position = Vector2(-116.981, 118.868)
-scale = Vector2(0.31, 0.31)
+scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("10_oy356")
 frame = 16
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y71mn")
+}
+autoplay = "dance"

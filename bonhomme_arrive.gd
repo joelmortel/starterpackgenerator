@@ -57,7 +57,7 @@ func remake_bonhomme(fiche_technique: Array):
 	oreilles.modulate = fiche_technique[0]
 	tete.modulate = fiche_technique[0]
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "global_position", Vector2(300, 300), 1)
+	tween.tween_property(self, "global_position", Vector2(125, 200), 1)
 	
 func byebye_bonhomme():
 	var tween1 = get_tree().create_tween()

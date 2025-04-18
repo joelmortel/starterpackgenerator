@@ -40,6 +40,8 @@ extends Node2D
 @onready var audio_full: AudioStreamPlayer = $Audio/audio_full
 @onready var audio_win: AudioStreamPlayer = $Audio/audio_win
 @onready var audio_musique: AudioStreamPlayer = $Audio/audio_musique
+@onready var audio_bananaorange: AudioStreamPlayer = $Audio/audio_bananaorange
+
 
 @onready var plateau: Node2D = $plateau
 
@@ -48,6 +50,12 @@ extends Node2D
 @onready var spawn_timer: Timer = $spawn_timer
 
 @onready var croco_panel: Node2D = $UICHEAP/croco_panel
+
+@onready var bouton_jaune: Button = $UICHEAP/ColorRect/bouton_jaune
+@onready var bouton_orange: Button = $UICHEAP/ColorRect/bouton_orange
+@onready var bouton_rejet: Button = $UICHEAP/ColorRect/bouton_rejet
+@onready var paneau_fin: Node2D = $paneau_fin
+
 
 
 var bonhomme_arrive = preload("res://bonhomme_arrive.tscn")
@@ -97,7 +105,7 @@ var jaunefull = false
 
 var vies_joueur = 3
 
-var NPC_needed = 5
+var NPC_needed = 10
 
 var game_time = 120
 var temps_restant = 0
@@ -112,17 +120,23 @@ var game_over = false
 var waiting_bonhomme = false
 
 
-var repertoire_accessoires = [1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16]
+var repertoire_accessoires = [1, 2, 3, 4, 5, 9, 10, 11, 12, 13, 14, 15, 16]
 var repertoire_acces_interdit = [2, 3, 9, 10, 16]
 
 
 func _ready() -> void:
 	timer_game.wait_time = 1
 	timer_game.start()
-	game_time = 120
 	bonhomme_random()
 	accessoires_1.frame = 0
 	accessoires_2.frame = 0
+	if JohnSingleton.francais == true:
+		croco_panel.croco_parle("C'est parti mon kiki!", "normal")
+	elif JohnSingleton.francais == false:
+		croco_panel.croco_parle("Let's go!", "normal")
+		bouton_jaune.text = "YELLOW"
+		bouton_orange.text = "ORANGE"
+		bouton_rejet.text = "REJECT"
 	update_the_ui()
 		
 func _physics_process(delta: float) -> void:
@@ -140,18 +154,31 @@ func _physics_process(delta: float) -> void:
 		
 
 func update_the_ui():
-	label_vies.text = "Points de vie : " + str(vies_joueur)
-	jaune_label.text = str(npc_jaunes) + " sur " + str(NPC_needed)
-	orange_label.text = str(npc_orange) + " sur " + str(NPC_needed)
-	if npc_jaunes >= NPC_needed:
-		jaune_label.text = "COMPLET"
-	if npc_orange >= NPC_needed:
-		orange_label.text = "COMPLET"
+	if JohnSingleton.francais == true:
+		label_vies.text = "Points de vie : " + str(vies_joueur)
+		jaune_label.text = str(npc_jaunes) + " sur " + str(NPC_needed)
+		orange_label.text = str(npc_orange) + " sur " + str(NPC_needed)
+		if npc_jaunes >= NPC_needed:
+			jaune_label.text = "COMPLET"
+		if npc_orange >= NPC_needed:
+			orange_label.text = "COMPLET"
+			
+	elif JohnSingleton.francais == false:
+		label_vies.text = "Life : " + str(vies_joueur)
+		jaune_label.text = str(npc_jaunes) + " on " + str(NPC_needed)
+		orange_label.text = str(npc_orange) + " on " + str(NPC_needed)
+		if npc_jaunes >= NPC_needed:
+			jaune_label.text = "FULL"
+		if npc_orange >= NPC_needed:
+			orange_label.text = "FULL"
 		
 	var minute_label = floor(game_time/60)
 	var seconde_label = floor(game_time % 60)
 	
-	time_label.text = "Temps restant : " + str(minute_label) + " : " + str(seconde_label)
+	if JohnSingleton.francais == true:
+		time_label.text = "Temps restant : " + str(minute_label) + " : " + str(seconde_label)
+	elif JohnSingleton.francais == false:
+		time_label.text = "Time left : " + str(minute_label) + " : " + str(seconde_label)
 
 
 
@@ -320,26 +347,35 @@ func verifier_bonhomme(reponse_joueur):
 		if vetements_index == 2 or vetements_index == 6 or vetements_index == 7:
 			npc_jaunes += 1
 			if npc_jaunes > NPC_needed :
-				var replique = "Cette section est déjà complétée idiot!"
+				var replique = ""
+				if JohnSingleton.francais == true:
+					replique = "Cette section est déjà complétée idiot!"
+				elif JohnSingleton.francais == false:
+					replique = "This section is already completed, idiot!"
 				croco_panel.croco_parle(replique, "bad")
-				print("QUOTA DÉPASSÉ : - 1 vie")
-				vies_joueur -= 1
 				audio_fail.play()
-				if vies_joueur < 1:
-					game_over = true
 			if npc_jaunes == NPC_needed:
 				print("QUOTA JAUNE ATTEINT - NE PLUS LAISSER ENTRER DE NPC JAUNE")
 				if orangefull == true:
 					copy_bonhomme("jaune")
-					var replique = "Oh! Bordel! T'as fait un sacré bon boulot!"
+					var replique = ""
+					if JohnSingleton.francais == true:
+						replique = "Oh! Bordel! T'as fait un sacré bon boulot!"
+					elif JohnSingleton.francais == false:
+						replique = "Oh! Damn! You did a damn good job!"
 					croco_panel.croco_parle(replique, "good")
 					audio_musique.stop()
 					audio_win.play()
-					plateau.play_video()
+					paneau_fin.win_message()
+					timer_game.stop()
 					return
 				elif orangefull == false:
 					jaunefull = true
-					var replique = "La section JAUNE est complétée. Ne laisse plus entrer personne!"
+					var replique = ""
+					if JohnSingleton.francais == true:
+						replique = "La section JAUNE est complétée!"
+					if JohnSingleton.francais == false:
+						replique = "The YELLOW section is complete!"
 					croco_panel.croco_parle(replique, "good")
 					audio_full.play()
 			if npc_jaunes <= NPC_needed:
@@ -347,7 +383,11 @@ func verifier_bonhomme(reponse_joueur):
 					print("accessoire interdit")
 					vies_joueur -= 1
 					audio_fail.play()
-					var replique = "Imbécile, t'as vu ce qu'il y avait dans ses mains? "
+					var replique = ""
+					if JohnSingleton.francais == true:
+						replique = "Imbécile, t'as vu ce qu'il y avait dans ses mains?"
+					elif JohnSingleton.francais == false:
+						replique = "You idiot, did you see what was in his hands?"	
 					croco_panel.croco_parle(replique, "bad")
 					copy_bonhomme("jaune")
 					if vies_joueur < 1:
@@ -356,14 +396,22 @@ func verifier_bonhomme(reponse_joueur):
 					var win_sound_array = [audio_ok, audio_ok_2, audio_ok_3]
 					var win_sound_choisi = win_sound_array.pick_random()
 					win_sound_choisi.play()
-					var replique = "Bien joué! Il manque encore " + str(NPC_needed - npc_jaunes) + " personnes dans la section jaune."
+					var replique = ""
+					if JohnSingleton.francais == true:
+						replique = "Bien joué! Il manque encore " + str(NPC_needed - npc_jaunes) + " personnes dans la section jaune."
+					elif JohnSingleton.francais == false:
+						replique = "Well done! There are still " + str(NPC_needed - npc_jaunes) + " people missing in the yellow section."
 					croco_panel.croco_parle(replique, "good")
 					copy_bonhomme("jaune")
 		else:
 			print("MAUVAISE FILE : - 1 vie")
 			vies_joueur -= 1
 			audio_fail.play()
-			var replique = "T'as de la difficulté avec tes couleurs ou quoi? Mauvaise file."
+			var replique = ""
+			if JohnSingleton.francais == true:
+				replique = "T'as de la difficulté avec tes couleurs ou quoi? Mauvaise file."
+			elif JohnSingleton.francais == false:
+				replique = "Are you having trouble with your colors or something? Wrong line."
 			croco_panel.croco_parle(replique, "bad")
 			if vies_joueur < 1:
 				game_over = true
@@ -371,32 +419,45 @@ func verifier_bonhomme(reponse_joueur):
 		if vetements_index == 0 or vetements_index == 5:
 			npc_orange += 1
 			if npc_orange > NPC_needed :
-				print("QUOTA DÉPASSÉ : - 1 vie")
-				var replique = "Cette section est déjà complétée idiot!"
+				var replique = ""
+				if JohnSingleton.francais == true:
+					replique = "Cette section est déjà complétée idiot!"
+				elif JohnSingleton.francais == false:
+					replique = "This section is already completed, idiot!"
 				croco_panel.croco_parle(replique, "bad")
-				vies_joueur -= 1
 				audio_fail.play()
-				if vies_joueur < 1:
-					game_over = true
 			if npc_orange == NPC_needed:
 				if jaunefull == true:
 					copy_bonhomme("orange")
-					var replique = "Oh! Bordel! T'as fait un sacré bon boulot!"
+					var replique = ""
+					if JohnSingleton.francais == true:
+						replique = "Oh! Bordel! T'as fait un sacré bon boulot!"
+					elif JohnSingleton.francais == false:
+						replique = "Oh! Damn! You did a damn good job!"
 					croco_panel.croco_parle(replique, "good")
 					audio_musique.stop()
 					audio_win.play()
-					plateau.play_video()
+					paneau_fin.win_message()
+					timer_game.stop()
 					return
 				elif jaunefull == false:
 					orangefull = true
 					audio_full.play()
 					print("QUOTA ORANGE ATTEINT - NE PLUS LAISSER ENTRER DE NPC ORANGE")
-					var replique = "La section ORANGE est complétée. Ne laisse plus entrer personne!"
+					var replique = ""
+					if JohnSingleton.francais == true:
+						replique = "La section ORANGE est complétée!"
+					if JohnSingleton.francais == false:
+						replique = "The ORANGE section is complete!"
 					croco_panel.croco_parle(replique, "good")
 			if npc_orange <= NPC_needed:
 				if repertoire_acces_interdit.has(accessoire_1_index) or repertoire_acces_interdit.has(accessoire_2_index):
 					print("accessoire interdit")
-					var replique = "Imbécile, t'as vu ce qu'il y avait dans ses mains? "
+					var replique = ""
+					if JohnSingleton.francais == true:
+						replique = "Imbécile, t'as vu ce qu'il y avait dans ses mains?"
+					elif JohnSingleton.francais == false:
+						replique = "You idiot, did you see what was in his hands?"	
 					croco_panel.croco_parle(replique, "bad")
 					copy_bonhomme("orange")
 					vies_joueur -= 1
@@ -407,14 +468,22 @@ func verifier_bonhomme(reponse_joueur):
 					var win_sound_array = [audio_ok, audio_ok_2, audio_ok_3]
 					var win_sound_choisi = win_sound_array.pick_random()
 					win_sound_choisi.play()
-					var replique = "Bien joué! Il manque encore " + str(NPC_needed - npc_orange) + " personnes dans la section orange."
+					var replique = ""
+					if JohnSingleton.francais == true:
+						replique = "Bien joué! Il manque encore " + str(NPC_needed - npc_orange) + " personnes dans la section ORANGE."
+					elif JohnSingleton.francais == false:
+						replique = "Well done! There are still " + str(NPC_needed - npc_orange) + " people missing in the ORANGE section."
 					croco_panel.croco_parle(replique, "good")
 					copy_bonhomme("orange")
 		else:
 			print("MAUVAISE FILE : - 1 vie")
 			vies_joueur -= 1
 			audio_fail.play()
-			var replique = "T'as de la difficulté avec tes couleurs ou quoi? Mauvaise file."
+			var replique = ""
+			if JohnSingleton.francais == true:
+				replique = "T'as de la difficulté avec tes couleurs ou quoi? Mauvaise file."
+			elif JohnSingleton.francais == false:
+				replique = "Are you having trouble with your colors or something? Wrong line."
 			croco_panel.croco_parle(replique, "bad")
 			if vies_joueur < 0:
 				game_over = true
@@ -426,7 +495,12 @@ func verifier_bonhomme(reponse_joueur):
 	if reponse_joueur == "rejet":
 		print("personnage rejeté")
 		var repliques_rejet = ["Fais de l'air", "Va jouer ailleurs", "Pas besoin de toi", "Dégage!"]
-		var replique = repliques_rejet.pick_random()
+		var repliques_rejet_en = ["Get some air", "Go play somewhere else", "No need for you", "Get out!"]
+		var replique = ""
+		if JohnSingleton.francais == true:
+			replique = repliques_rejet.pick_random()
+		elif JohnSingleton.francais == false:
+			replique = repliques_rejet_en.pick_random()
 		croco_panel.croco_parle(replique, "normal")
 		var zap_array = [audio_zap, audio_zap_2, audio_zap_3]
 		var zap_choisi = zap_array.pick_random()
@@ -441,6 +515,11 @@ func verifier_bonhomme(reponse_joueur):
 		waiting_bonhomme = true
 		spawn_timer.wait_time = 1
 		spawn_timer.start()
+		
+	if game_over == true:
+		audio_musique.stop()
+		audio_fail.play()
+		paneau_fin.game_over_message()
 	
 
 
@@ -452,6 +531,10 @@ func _on_timer_game_timeout() -> void:
 		timer_game.start()
 	else:
 		game_over = true
+		waiting_bonhomme = true
+		audio_musique.stop()
+		audio_fail.play()
+		paneau_fin.game_over_message()
 		print("Vous avez recruté " + str(npc_jaunes) + " NPC jaune sur 25 et " + str(npc_orange) + " NPC orange sur 20.")
 
 

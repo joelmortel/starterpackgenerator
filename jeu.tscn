@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cdmghfmx74sd3"]
+[gd_scene load_steps=27 format=3 uid="uid://cdmghfmx74sd3"]
 
 [ext_resource type="Script" path="res://jeu.gd" id="1_sp1r3"]
 [ext_resource type="SpriteFrames" uid="uid://wymmannlca2h" path="res://Visuel/corps.res" id="2_8ij2y"]
@@ -20,12 +20,15 @@
 [ext_resource type="AudioStream" uid="uid://bog0hyu3cd6bo" path="res://audio/zap2.wav" id="15_nylsa"]
 [ext_resource type="AudioStream" uid="uid://cifpqckuq717q" path="res://audio/zap3.wav" id="16_qlemp"]
 [ext_resource type="AudioStream" uid="uid://dbrf54gr4tq4h" path="res://audio/full.wav" id="19_pr61v"]
-[ext_resource type="AudioStream" uid="uid://b5j4y7xvheluf" path="res://audio/casting_theme.wav" id="20_cwtt4"]
 [ext_resource type="PackedScene" uid="uid://bo7hg4bprd4bg" path="res://plateau.tscn" id="21_fxvn6"]
+[ext_resource type="AudioStream" uid="uid://dbi5kq173bxan" path="res://audio/musique_hard_casting.wav" id="21_stlym"]
 [ext_resource type="PackedScene" uid="uid://2mv4y17rnlb4" path="res://bonhomme_basic.tscn" id="22_cw1ek"]
+[ext_resource type="AudioStream" uid="uid://diun27glnbud1" path="res://audio/bananaorange.wav" id="22_k7kyk"]
 [ext_resource type="Script" path="res://bonhomme_arrive.gd" id="23_jj3ad"]
+[ext_resource type="PackedScene" uid="uid://d0m1sm70iuiu6" path="res://paneau_fin.tscn" id="26_n0j05"]
 
 [node name="jeu" type="Node2D"]
+scale = Vector2(0.555, 0.555)
 script = ExtResource("1_sp1r3")
 
 [node name="bonhomme" type="Node2D" parent="."]
@@ -91,13 +94,13 @@ frame = 9
 
 [node name="accessoires1" type="AnimatedSprite2D" parent="bonhomme/Accessoires"]
 position = Vector2(-379.245, 118.868)
-scale = Vector2(0.31, 0.31)
+scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("11_twxa0")
 frame = 16
 
 [node name="accessoires2" type="AnimatedSprite2D" parent="bonhomme/Accessoires"]
 position = Vector2(-116.981, 118.868)
-scale = Vector2(0.31, 0.31)
+scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("11_twxa0")
 frame = 16
 
@@ -230,8 +233,11 @@ stream = ExtResource("19_pr61v")
 stream = ExtResource("19_pr61v")
 
 [node name="audio_musique" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("20_cwtt4")
+stream = ExtResource("21_stlym")
 autoplay = true
+
+[node name="audio_bananaorange" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("22_k7kyk")
 
 [node name="bonhomme_basic" parent="." instance=ExtResource("22_cw1ek")]
 position = Vector2(-152, 300)
@@ -246,6 +252,11 @@ one_shot = true
 [node name="plateau" parent="." instance=ExtResource("21_fxvn6")]
 visible = false
 position = Vector2(3, -1)
+
+[node name="paneau_fin" parent="." instance=ExtResource("26_n0j05")]
+visible = false
+position = Vector2(-20, -22)
+scale = Vector2(1.055, 1.055)
 
 [connection signal="timeout" from="Timer_game" to="." method="_on_timer_game_timeout"]
 [connection signal="pressed" from="UICHEAP/ColorRect/bouton_jaune" to="." method="_on_bouton_jaune_pressed"]

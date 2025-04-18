@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://0w51o5tcmbxo"]
+
+[ext_resource type="Script" path="res://choix_langue.gd" id="1_1hkbw"]
+[ext_resource type="FontFile" uid="uid://cw118xw0al4w0" path="res://fonts/BaksoSapi.otf" id="2_ryvsu"]
+[ext_resource type="SpriteFrames" uid="uid://cb5bv18p1myhk" path="res://Visuel/chanteur.res" id="3_2l7dq"]
+[ext_resource type="AudioStream" uid="uid://dbrf54gr4tq4h" path="res://audio/full.wav" id="4_d2enj"]
+
+[node name="choix_langue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 513.0
+offset_bottom = 289.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.555, 0.555)
+script = ExtResource("1_1hkbw")
+
+[node name="bouton_fr" type="Button" parent="."]
+layout_mode = 1
+offset_left = 115.0
+offset_top = 108.0
+offset_right = 456.0
+offset_bottom = 295.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ryvsu")
+theme_override_font_sizes/font_size = 41
+text = "Français"
+metadata/_edit_use_anchors_ = true
+
+[node name="bouton_en" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -447.0
+offset_top = -262.0
+offset_right = -117.0
+offset_bottom = -67.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ryvsu")
+theme_override_font_sizes/font_size = 41
+text = "English"
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(251, 525)
+scale = Vector2(0.105, 0.105)
+sprite_frames = ExtResource("3_2l7dq")
+autoplay = "default"
+
+[node name="startsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_d2enj")
+
+[connection signal="pressed" from="bouton_fr" to="." method="_on_bouton_fr_pressed"]
+[connection signal="pressed" from="bouton_en" to="." method="_on_bouton_en_pressed"]
+[connection signal="finished" from="startsound" to="." method="_on_startsound_finished"]

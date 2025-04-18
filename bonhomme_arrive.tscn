@@ -78,13 +78,13 @@ frame = 9
 
 [node name="accessoires1" type="AnimatedSprite2D" parent="bonhomme/Accessoires"]
 position = Vector2(-379.245, 118.868)
-scale = Vector2(0.31, 0.31)
+scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("11_614uk")
 frame = 16
 
 [node name="accessoires2" type="AnimatedSprite2D" parent="bonhomme/Accessoires"]
 position = Vector2(-116.981, 118.868)
-scale = Vector2(0.31, 0.31)
+scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("11_614uk")
 frame = 16
 

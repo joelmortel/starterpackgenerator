@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1370qqirqkwt"]
+
+[ext_resource type="Script" path="res://menu_titre.gd" id="1_72j4t"]
+[ext_resource type="SpriteFrames" uid="uid://cvfpkh24ydrno" path="res://Visuel/titre.res" id="1_tit5b"]
+[ext_resource type="FontFile" uid="uid://cw118xw0al4w0" path="res://fonts/BaksoSapi.otf" id="2_b2diy"]
+[ext_resource type="AudioStream" uid="uid://b4j4hvxdapde" path="res://audio/menu_hard_casting.wav" id="4_rpqyb"]
+[ext_resource type="SpriteFrames" uid="uid://cb5bv18p1myhk" path="res://Visuel/chanteur.res" id="5_1jqbq"]
+[ext_resource type="SpriteFrames" uid="uid://b8u3pwq845rex" path="res://Visuel/crocojack.res" id="6_p00hu"]
+[ext_resource type="SpriteFrames" uid="uid://cqx7034nvndib" path="res://Visuel/poucecroco.res" id="7_c6ecu"]
+
+[node name="Menu_titre" type="Node2D"]
+scale = Vector2(0.555, 0.555)
+script = ExtResource("1_72j4t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(571, 323)
+scale = Vector2(0.61, 0.61)
+sprite_frames = ExtResource("1_tit5b")
+
+[node name="start_button" type="Button" parent="."]
+offset_left = 420.0
+offset_top = 498.0
+offset_right = 680.0
+offset_bottom = 598.0
+theme_override_fonts/font = ExtResource("2_b2diy")
+theme_override_font_sizes/font_size = 76
+text = "JOUER"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rpqyb")
+autoplay = true
+
+[node name="chanteur" type="AnimatedSprite2D" parent="."]
+position = Vector2(135, 522)
+scale = Vector2(0.10675, 0.10675)
+sprite_frames = ExtResource("5_1jqbq")
+autoplay = "default"
+
+[node name="crocoman" type="AnimatedSprite2D" parent="."]
+position = Vector2(1051, 394)
+scale = Vector2(0.265, 0.265)
+sprite_frames = ExtResource("6_p00hu")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="maincroco" type="AnimatedSprite2D" parent="crocoman"]
+sprite_frames = ExtResource("7_c6ecu")
+frame = 2
+
+[connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
